@@ -32,7 +32,7 @@ if (isset($_POST['btnlog'])){
 
                             ?>
                             <script language="javascript">
-                            window.location = "request.php";
+                            window.location = "#";
                             </script>
                             <?php
 
