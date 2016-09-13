@@ -5,14 +5,15 @@ $admin = $_SESSION['adminname'];
 $user = $_SESSION['username'];
 
 
-if (($user!="")) {
+if (($user!="") || ($admin!="")) {
     
     
- $register = $_SESSION['id'];
+   $register = $_SESSION['id'];
  $reg = explode(" / ", $register);
  $sreg= $reg[0];
+$table = $_SESSION['table'];
 
-        $search = mysql_query("select * from member where regnum='$sreg'");
+        $search = mysql_query("select * from $table where regnum='$sid'");
         $rows = mysql_fetch_array($search);
        
 
@@ -20,7 +21,7 @@ if (($user!="")) {
 }  else {
     ?>
 <script language ="javascript">
-    window.location = "login.php";
+    window.location = "logout.php";
     </script>
 
 <?php
