@@ -20,7 +20,7 @@
         <nav class="templatemo-left-nav">
           <ul>
             <li><a href="user.php"><i class="fa fa-home fa-fw"></i>Manage Users</a></li>
-            <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>Pending Authorization</a></li>
+            <li><a href="pending.php"><i class="fa fa-bar-chart fa-fw"></i>Pending Authorization</a></li>
             <li><a href="search.php"><i class="fa fa-database fa-fw"></i>Search Member</a></li>
 			<li><a href="logout.php"><i class="fa fa-bar-chart fa-fw"></i>Logout</a></li>
             <!--li><a href="maps.html"><i class="fa fa-map-marker fa-fw"></i>Maps</a></li>

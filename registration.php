@@ -43,15 +43,72 @@ if (($user!="")) {
  
 <script src="Jquery/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
   
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
 <script>
-jQuery(function() {
-    jQuery( "#datepicker" ).datepicker();
-});
-</script>
 
+
+//$(document).ready(function(){
+//    $("#back").click(function(){
+//        $("#reg").show(500);
+//        $('#last').show(500);
+//    });
+//});
+
+$(document).ready(function(){
+    $("#ft").click(function(){
+        
+//        $("#reg").hide(1000);
+        $('#last').show(500);
+        $('#foot').show();
+        $('#save').show();
+        $('#arms').hide();
+        $('#othr').hide();
+    });
+});
+$(document).ready(function(){
+    $("#arm").click(function(){
+        
+//        $("#reg").hide(1000);
+        $('#last').show(500);
+        $('#arms').show();
+        $('#save').show();
+        $('#foot').hide();
+        $('#othr').hide();
+    });
+});
+$(document).ready(function(){
+    $("#other").click(function(){
+        
+//        $("#reg").hide(1000);
+        $('#last').show(500);
+        $('#othr').show();
+        $('#arms').hide();
+        $('#foot').hide();
+        $('#save').show();
+        
+    });
+});
+
+
+
+jQuery(function() {
+    jQuery( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
+    
+});
+jQuery(function() {
+    jQuery( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd'});
+    
+});
+
+
+
+</script>
+   
   </head>
   <body>
     <!-- Left column -->
@@ -83,39 +140,29 @@ include 'menuuser.php';
           <div class="templatemo-content-widget white-bg">
             <h2 class="margin-bottom-10">Jaipur Foot workshop Registration form</h2>
             <p></p>
-            <form  class="templatemo-login-form" method="post" enctype="multipart/form-data">
-              <div class="row form-group">
-<!--                <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputFirstName">Registration Number </label>
-                    <input type="text" class="form-control" id="inputFirstName" disabled="" placeholder="Registration Number " name = "rnumber" value="<?php echo $rnumber   ?>"> 
-                   <label for="inputFirstName"> <?php //echo $ernum  ?> </label>
-                </div>-->
-                <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputLastName">Date </label>
-                    <input type="text" class="form-control"  disabled="" placeholder="<?php echo date("Y.m.d") ?>" name = "date" >                  
-                </div> 
-
-<!--div class="col-lg-4 col-md-4 form-group">                  
-                                
-                </div--> 
-				<div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputLastName">District </label>
-                    <!--input type="text" class="form-control" id="inputLastName" placeholder="district" name = "district" --> 
+             <form  class="templatemo-login-form" method="post" enctype="multipart/form-data">
+                <div id="reg">
+                  <div class="row form-group">
+                    <div class="col-lg-6 col-md-6 form-group">                  
+                        <label for="inputLastName">Date </label>
+                        <input type="text" class="form-control"  disabled="" placeholder="<?php echo date("Y.m.d") ?>" name = "date"  >                  
+                    </div> 
+                        <div class="col-lg-6 col-md-6 form-group">                  
+                         <label for="inputLastName">District </label>
+                                 <select class="form-control" name = "district">
+                                           <?php 
+                                        $sql = mysql_query("SELECT * FROM  district ORDER BY district ASC");
+                                        while ($row = mysql_fetch_array($sql)){
+                                        echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
+                                        }
+                                        ?>				
+                              </select> 
+                  <label for="inputFirstName"> <?php echo $erdis  ?> </label>
                     
-                     <select class="form-control" name = "district">
-   <?php 
-$sql = mysql_query("SELECT * FROM  district ORDER BY district ASC");
-while ($row = mysql_fetch_array($sql)){
-echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
-}
-?>				
-                  </select> 
-                    
-                    <label for="inputFirstName"> <?php echo $erdis  ?> </label>
-                    
-                </div>
-
+                 </div>
               </div>
+                    
+                    
               <div class="row form-group">
 			  <div class="col-lg-12  form-group">
                 <div class="col-lg-2 col-md-2 form-group">                  
@@ -157,11 +204,48 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
                      <label for="inputFirstName"> <?php echo $erad  ?> </label>
                 </div>
               </div>
+                    
+                    
+                     <div class="row form-group">
+                <div class="col-lg-4 col-md-4 form-group">                  
+                    <label for="inputFirstName">ID Number </label>
+                    <input type="text" class="form-control" id="inputFirstName" placeholder="NIC num" name = "nic" value="<?php echo $nic   ?>">  
+                    <label for="inputFirstName"> <?php echo $ersge ?> </label>
+                </div>
+                <div class="col-lg-4 col-md-4 form-group">                  
+                    <label for="inputLastName">Nationality </label>
+                     <select class="form-control" name = "national" value="<?php echo $national   ?>">
+					 <option value="" disabled selected>--Select-- </option>
+                    <option value="Sinhala">Sinhala</option>
+                    <option value="Tamil">Tamil</option> 
+                    <option value="Muslim">Muslim</option>
+                    <option value="Burgher">Burgher</option> 
+									
+                  </select>     
+                    
+                     <label for="inputFirstName"> <?php echo $ergen  ?> </label>
+                </div> 
+				<div class="col-lg-4 col-md-4 form-group">                  
+                    <label for="inputLastName">Religion </label>
+                     <select class="form-control" name = "religion" value="<?php echo $religion   ?>">
+					 <option value="" disabled selected>--Select-- </option>
+                    <option value="Budhist">Budhist</option>
+                    <option value="Christian">Christian</option> 
+                    <option value="Islam">Islam</option>
+                    <option value="Hindu">Hindu</option> 
+									
+                  </select>     
+                    
+                     <label for="inputFirstName"> <?php echo $ergen  ?> </label>
+                </div>
+              </div>
+                    
+                    
 			  
 			   <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputFirstName">Age </label>
-                    <input type="text" class="form-control" id="inputFirstName" placeholder="Age " name = "age" value="<?php echo $age   ?>">  
+                    <label for="inputFirstName">Date Of Birth </label>
+                    <input type="text" class="form-control" id="datepicker" placeholder="DOB" name = "dob" value="<?php    ?>">  
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
                 </div>
                 <div class="col-lg-4 col-md-4 form-group">                  
@@ -195,7 +279,7 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
 			  
 			    <div class="row form-group">
                 <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputNewPassword">Presnt Employment </label>
+                    <label for="inputNewPassword">Present Employment </label>
                      <textarea class="form-control" id="inputNote" rows="2" name = "emp" placeholder="Presnt Employment ..."><?php echo $emp   ?></textarea>
                 </div>
                 <div class="col-lg-6 col-md-6 form-group">                  
@@ -207,17 +291,13 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
 			   <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputNewPassword">Date of Amputation </label>
-                       <input type="text" class="form-control" id="datepicker" placeholder="Date of Amputation" name = "adate" value="<?php echo $adate   ?>" > 
-                       
-
-                       
-                       
+                       <input type="text" class="form-control" id="datepicker1" placeholder="Date of Amputation" name = "adate" value="<?php ?>" > 
                        
                        
                 </div>
                 <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputConfirmNewPassword">Cause Of Amputaion</label>
-                    <textarea class="form-control" id="inputNote" rows="2" name = "case" placeholder="Cause Of Amputaion..."><?php echo $case   ?></textarea>
+                    <label for="inputConfirmNewPassword">Doctors Name</label>
+                    <textarea class="form-control" id="inputNote" rows="2" name = "doc" placeholder="Doctors Name"><?php echo $doc   ?></textarea>
                 </div> 
 				
 				  <div class="col-lg-4 col-md-4 form-group">                  
@@ -225,18 +305,37 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
                     <textarea class="form-control" id="inputNote" rows="2" name = "hos" placeholder="Hospital..."><?php echo $hos   ?></textarea>
                 </div> 
               </div>
-			  
-			   <div class="row form-group">
+			
+                     <div class="row form-group">
+                <div class="col-lg-4 col-md-4 form-group">                  
+                    <label for="inputNewPassword">Any Other Diseases? </label>
+                       <input type="text" class="form-control" id="inputNote" placeholder="Other Diseases?" name = "otdis" value="<?php echo $anyother   ?>" > 
+                       
+                       
+                </div>
+                <div class="col-lg-4 col-md-4 form-group">                  
+                    <label for="inputConfirmNewPassword">What will You do after the Amputation</label>
+                    <input type="text" class="form-control" id="inputNote" rows="2" name = "afteramp" placeholder="" value="<?php echo $case   ?>">
+                </div> 
+				
+				  <div class="col-lg-4 col-md-4 form-group">                  
+                    <label for="inputConfirmNewPassword">Vocational Interests</label>
+                    <textarea class="form-control" id="inputNote" rows="2" name = "voc" placeholder="Vocational Interests"><?php echo $voc   ?></textarea>
+                </div> 
+              </div>  
+                    
+                    
+<!--			   <div class="row form-group">
 			 
                 <div class="col-lg-6 col-md-6 form-group"> 
 			 
                  
                     <div class="margin-right-15 templatemo-inline-block">
-                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php echo $left ?>>
+                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php //echo $left ?>>
                       <label for="r1" class="font-weight-400"><span></span>Left Leg</label>
                     </div>
                     <div class="margin-right-15 templatemo-inline-block">
-                      <input type="radio" name="leg"  value="Right Leg"  id="r2" <?php echo $right ?>>
+                      <input type="radio" name="leg"  value="Right Leg"  id="r2" <?php //echo $right ?>>
                       <label for="r2" class="font-weight-400"><span></span>Right Leg</label>
                     </div>
 					
@@ -245,23 +344,270 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
 					<div class="col-lg-6 col-md-6 form-group"> 
 					
 					  <div class="margin-right-15 templatemo-inline-block">
-                      <input type="radio" name="knee"  value="Below Knee" id="r4" <?php echo $below ?>>
+                      <input type="radio" name="knee"  value="Below Knee" id="r4" <?php //echo $below ?>>
                       <label for="r4" class="font-weight-400"><span></span>Below Knee</label>
                     </div>
                     <div class="margin-right-15 templatemo-inline-block">
-                      <input type="radio" name="knee"  value="Under Knee" id="r5" <?php echo $under ?> >
+                      <input type="radio" name="knee"  value="Under Knee" id="r5" <?php //echo $under ?> >
                       <label for="r5" class="font-weight-400"><span></span>Under Knee</label>
                     </div>
                    
-				
+			 </div>	
 				   
+               
+              </div>-->
+<!--                    <button type="button" class="templatemo-blue-button" name="next" id="next" >Next</button>-->
+                    
+                    
+                 </div>
+         
+                
+                
+                <!--		start of next page-->
+<!--                <div id="last" style="display: none">
+                    <button type="button" class="templatemo-blue-button" name="next" id="back" >Back</button> 
+                </div>-->
+                
+                
+                <div id="last"  style="">
+                
+                      <div class="row form-group">
+			 
+                <div class="col-lg-12 col-md-12 form-group"> 
+			 
+                 
+                    <div class="margin-right-15 templatemo-inline-block">
+                      
+                        <label for="inputLastName">Registration for a   </label>
+<!--                        <select class="form-control" name = "gender" id="type" value="<?php // echo $gender   ?>">
+					 <option value="" disabled selected>   --Select Type--    </option>
+                    <option value="foot">Foot</option>
+                    <option value="arm">Arm</option>  
+                    <option value="other">Other</option>  
+									
+                  </select>-->
+                        
+                    </div>
+                    
+                    
+                   <input type="button" id="ft" name="ft" value="Foot">
+                   <input type="button" id="arm" name="arm" value="Arm">
+                   <input type="button" id="other" name="other" value="Other">
+			 </div>	
+                          </div>
+                    
                 </div>
-              </div>
-			
-              <div class="form-group text-right">
+                          
+                                      <div class="row form-group" id="foot" style="display: none">
+                              
+                                          <div class="col-lg-12  form-group">
+                                <div class="col-lg-6 col-md-6 form-group">                  
+                                    <label for="inputUsername">cause of amputation</label>
+                                     <select class="form-control" name = "footcause" value="<?php    ?>">
+                                         <option value="0">--Select--</option>
+                                    <option value="Accident">Accident</option>
+                                    <option value="From Birth">From Birth</option>  
+                                    <option value="War">War</option>  
+<!--                                                 <option value="Master">Master.</option> 
+                <option value="Rev.">Rev..</option> 				-->
+                                  </select>  
+
+                                    <label for="inputFirstName"> </label>
+                                </div> 
+                                                </div>
+                              
+                                                                              <div class="row form-group">
+
+                                                                <div class="col-lg-6 col-md-6 form-group"> 
+
+
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php echo $left ?>>
+                                                                      <label for="r1" class="font-weight-400"><span></span>Left Leg</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="leg"  value="Right Leg"  id="r2" <?php echo $right ?>>
+                                                                      <label for="r2" class="font-weight-400"><span></span>Right Leg</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="leg"  value="Both"  id="r4" <?php echo $both ?>>
+                                                                      <label for="r4" class="font-weight-400"><span></span>Both Legs</label>
+                                                                    </div>
+
+                                                                                         </div><?php echo $erleg ?>
+
+                                                                                        <div class="col-lg-6 col-md-6 form-group"> 
+
+                                                                                          <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="knee"  value="Above Knee" id="r5" <?php echo $below ?>>
+                                                                      <label for="r5" class="font-weight-400"><span></span>Above Knee</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="knee"  value="Below Knee" id="r6" <?php echo $under ?> >
+                                                                      <label for="r6" class="font-weight-400"><span></span>Below Knee</label>
+                                                                    </div>
+
+                                                                         </div>	<?php echo $erknee ?>
+
+
+                                                              </div>
+                              
+                              
+                                          </div>
+                          
+                
+                                          
+                <div class="row form-group" id="arms" style="display: none">
+                    
+                                                      <div class="col-lg-12  form-group">
+                                           <div class="col-lg-6 col-md-6 form-group">                  
+                                    <label for="inputUsername">cause of amputation</label>
+                                     <select class="form-control" name = "armcause" value="<?php  ?>">
+                                         <option value="0">--Select--</option>
+                                    <option value="Accident">Accident</option>
+                                    <option value="From Birth">From Birth</option>  
+                                    <option value="War">War</option>  
+<!--                                                 <option value="Master">Master.</option> 
+                <option value="Rev.">Rev..</option> 				-->
+                                  </select>  
+
+                                    <label for="inputFirstName">  </label>
+                                </div> 
+                                            </div>
+
+                                                                                 <div class="row form-group">
+
+                                                                <div class="col-lg-6 col-md-6 form-group"> 
+
+
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="arm"  value="Left Arm" id="r7" <?php echo $left ?>>
+                                                                      <label for="r7" class="font-weight-400"><span></span>Left Arm</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="arm"  value="Right Arm"  id="r8" <?php echo $right ?>>
+                                                                      <label for="r8" class="font-weight-400"><span></span>Right Arm</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="arm"  value="Both"  id="r9" <?php echo $both ?>>
+                                                                      <label for="r9" class="font-weight-400"><span></span>Both Arms</label>
+                                                                    </div>
+
+                                                                                         </div><?php echo $erarm   ?>
+
+                                                                                        <div class="col-lg-6 col-md-6 form-group"> 
+
+                                                                                          <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="elbow"  value="Above Elbow" id="r10" <?php echo $below ?>>
+                                                                      <label for="r10" class="font-weight-400"><span></span>Above Elbow</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="elbow"  value="Below Elbow" id="r11" <?php echo $under ?> >
+                                                                      <label for="r11" class="font-weight-400"><span></span>Below Elbow</label>
+                                                                    </div>
+
+                                                                         </div>	
+
+
+                                                              </div>
+
+                                                          
+
+              
+                                                          
+                                                          
+                                                            </div>
+                                          
+                
+                
+                <div class="row form-group" id="othr" style="display: none">
+                                                      <div class="col-lg-12  form-group">
+                                           <div class="col-lg-6 col-md-6 form-group">                  
+                                    <label for="inputUsername">cause of Disability</label>
+                                     <select class="form-control" name = "othercause" value="<?php echo $title   ?>">
+                                         <option value="0">--Select--</option>
+                                    <option value="Accident">Accident</option>
+                                    <option value="From Birth">From Birth</option>  
+                                    <option value="War">War</option>  
+                                                 <option value="Polio">Polio</option> <!--
+                <option value="Rev.">Rev..</option> 				-->
+                                  </select>  
+
+                                    <label for="inputFirstName"> <?php echo $ertil  ?> </label>
+                                </div> 
+                                                          <div class="col-lg-6 col-md-6 form-group">                  
+                    <label for="inputLastName">Other Details </label>
+                    
+                       <textarea class="form-control" id="inputNote" rows="1" name = "other" placeholder="Other Details"><?php   ?></textarea>
+                       
+                </div>
+                                            </div>
+
+                                                                                 <div class="row form-group">
+
+                                                                <div class="col-lg-6 col-md-6 form-group"> 
+
+
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="otherarm"  value="Left Arm" id="r12" <?php echo $left ?>>
+                                                                      <label for="r12" class="font-weight-400"><span></span>Left Arm</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="otherarm"  value="Right Arm"  id="r13" <?php echo $right ?>>
+                                                                      <label for="r13" class="font-weight-400"><span></span>Right Arm</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="otherarm"  value="Both"  id="r14" <?php echo $both ?>>
+                                                                      <label for="r14" class="font-weight-400"><span></span>Both Arms</label>
+                                                                    </div>
+
+                                                                                         </div>
+
+                                                                              <div class="col-lg-6 col-md-6 form-group"> 
+
+
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="otherleg"  value="Left Leg" id="r15" <?php echo $left ?>>
+                                                                      <label for="r15" class="font-weight-400"><span></span>Left Leg</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="otherleg"  value="Right Leg"  id="r16" <?php echo $right ?>>
+                                                                      <label for="r16" class="font-weight-400"><span></span>Right Leg</label>
+                                                                    </div>
+                                                                    <div class="margin-right-15 templatemo-inline-block">
+                                                                      <input type="radio" name="otherleg"  value="Both"  id="r17" <?php echo $both ?>>
+                                                                      <label for="r17" class="font-weight-400"><span></span>Both Legs</label>
+                                                                    </div>
+
+                                                                                         </div>
+
+
+                                                              </div>
+
+              
+                                                          
+                                                          
+                                                            </div>
+                                        
+                          
+                          
+                          
+                <div class="form-group text-right" id="save" style="display: none ">
+                  
                 <button type="submit" class="templatemo-blue-button" name = "save">Save</button>
                 <button type="reset" class="templatemo-white-button">Reset</button>
-              </div>                           
+              </div>
+                          
+                          
+				   
+                
+                
+                
+                
+<!--                end of next-->
+                
+               
+                
             </form>
           </div>
           <footer class="text-right">
@@ -269,6 +615,7 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
           </footer>
         </div>
       </div>
+      
     </div>
 
     <!-- JS -->
@@ -284,10 +631,17 @@ echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
 }  else {
     ?>
 <script language ="javascript">
-    window.location = "login.php";
+    window.location = "logout.php";
     </script>
 
 <?php
 }
 
 ?>
+
+    
+    <script>
+        
+
+ 
+    </script>

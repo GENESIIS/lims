@@ -4,13 +4,9 @@ include ('connection.php');
 $admin = $_SESSION['adminname'];
 $user = $_SESSION['username'];
 
-
-
-    
-    if (isset($_POST['search'])) {
         include 'searchcode.php';
        
-    }
+    
     
     
 
@@ -43,6 +39,27 @@ $user = $_SESSION['username'];
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    
+    
+    <script>
+$(function() {    // Makes sure the code contained doesn't run until
+                  //     all the DOM elements have loaded
+
+    $('#select').change(function(){
+        $('.slct').hide();
+        $('#' + $(this).val()).show();
+    });
+
+});
+
+
+
+</script>
+    
+    
+    
   </head>
   <body>
     <!-- Left column -->
@@ -87,16 +104,73 @@ if($admin!="" )
           <div class="templatemo-content-widget white-bg">
             <h2 class="margin-bottom-10">Search</h2>
 <!--            <p>Here goes another form and form controls.</p>-->
-            
             <form class="templatemo-login-form" method="post">
-              <div class="row form-group">
+            <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputFirstName">Reg number JF</label>
-                    <input type="text" class="form-control" name="num" id="inputFirstName" placeholder="Reg Num" value="<?php echo $num ?> "> <?php echo $ernum ?>                 
+                    <label for="inputFirstName">NIC Number</label>
+                    <input type="text" class="form-control" name="nic" id="inputFirstName" placeholder="ID Number" value="<?php echo $id ?> "> <?php echo $erno ?>                 
                 </div>
                 
               </div>
               
+              <div class="form-group text-right">
+                  <button type="submit" name="searchid" class="templatemo-blue-button">Search</button>
+                <button type="reset" class="templatemo-white-button">Reset</button>
+              </div> 
+            
+            </form>
+            
+            
+            <form class="templatemo-login-form" method="post">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-6 form-group">                  
+                                    <label for="inputUsername">Search For </label>
+                                    <select class="form-control" name = "num" id="select" value="<?php echo $title   ?>">
+                                         <option value="">--Select--</option>
+                                    <option value="Foot">Foot</option>
+                                    <option value="Arm">Arm</option>  
+                                    <option value="Other">Other</option>  
+<!--                                                 <option value="All">All</option> 
+                <option value="Rev.">Rev..</option> 				-->
+                                  </select>  
+
+                                    <label for="inputFirstName"> <?php echo $ernum ?>  </label>
+                                </div> 
+                
+              </div>
+                <div class="row form-group slct" id="Foot" style="display: none">
+                <div class="col-lg-6 col-md-6 form-group">                  
+                                     <label for="inputConfirmNewPassword">Reg Number J F </label>
+                    <input type="text" class="form-control" id="inputNote" rows="2" name = "regfoot" placeholder="" value="">
+                                </div> 
+                
+              </div>
+                 <div class="row form-group slct" id="Arm" style="display: none">
+                <div class="col-lg-6 col-md-6 form-group">                  
+                                     <label for="inputConfirmNewPassword">Reg Number A A</label>
+                    <input type="text" class="form-control" id="inputNote" rows="2" name = "regarm" placeholder="" value="">
+                                </div> 
+                
+              </div>
+                
+                 <div class="row form-group slct" id="Other"style="display: none">
+                <div class="col-lg-6 col-md-6 form-group">                  
+                                     <label for="inputConfirmNewPassword">Reg NUmber O A</label>
+                    <input type="text" class="form-control" id="inputNote" rows="2" name = "regother" placeholder="" value="">
+                                </div> 
+                
+              </div>
+                
+                <div class="row form-group slct" id="All"style="display: none">
+                <div class="col-lg-6 col-md-6 form-group">                  
+                                     <label for="inputConfirmNewPassword">Reg NUmber</label>
+                    <input type="text" class="form-control" id="inputNote" rows="2" name = "all" placeholder="" value="">
+                                </div> 
+                
+              </div>
+                
+                
+                
               <div class="form-group text-right">
                   <button type="submit" name="search" class="templatemo-blue-button">Search</button>
                 <button type="reset" class="templatemo-white-button">Reset</button>
