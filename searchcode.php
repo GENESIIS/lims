@@ -1,8 +1,13 @@
 <?php
-session_start();
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
+
+$nic=$ernum=$erno="";
 
 
   if (isset($_POST['searchid'])) {
@@ -68,7 +73,7 @@ $user = $_SESSION['username'];
       if ( ($foot=="") && ($arm=="") &&($other=="")  ) {
         ?>
                             <script language="javascript">
-                                window.location = "apply.php";
+                                alert('Please Enter The Reg Number');
                             </script>
                             <?php
     }elseif ($foot!="") {
