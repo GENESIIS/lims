@@ -4,6 +4,7 @@ include ('connection.php');
 //$admin = $_SESSION['adminname'];
 $user = $_SESSION['username'];
 
+$from=$to="";
 
 if (($user!="")) {
     $date = date("Y.m.d");
@@ -243,7 +244,7 @@ include 'menuuser.php';
 				   <tr>
                     <td> <label for="inputLastName"> Total Limbs </label></td>
                     <td>      <?php 
-            echo $row7['ak'] + $row8['ak'];
+            echo $row5['bk'] + $row6['bk'];
             ?></td>
                    
                   
