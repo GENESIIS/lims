@@ -1,20 +1,20 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
 if (($admin!="") || ($user!="")) {
     $mtable = $_SESSION['regtbl'];
     $tbl = $_SESSION['tbl'];
-    $col = $_SESSION['col']; 
-   $reg = $_SESSION['reg'];
+    //$col = $_SESSION['col']; 
+   //$reg = $_SESSION['reg'];
     
     
     if (isset($_POST['confirm'])) {
-        $id = $_POST['hidid'];
-        $col = $_POST['hidcol'];
+      $id = $_POST['hidid'];
+      $col = $_POST['hidcol'];
         
         $sql2 = mysql_query("SELECT * FROM $mtable AS a INNER JOIN $tbl as b ON a.regnum = b.regnum 
             WHERE b.regnum IN (SELECT regnum FROM $tbl where $col = '$id')");
@@ -43,7 +43,7 @@ if (($admin!="") || ($user!="")) {
         $limb = $_POST['limb'];
         $ortho = $_POST['ortho'];
         
-        if (($tbl=="foot") && ($limb=="0")) {
+        if (($tbl=="foot") && ($limb=="")) {
             $type = $limb;
             ?>
 
@@ -51,12 +51,12 @@ if (($admin!="") || ($user!="")) {
     alert('Please select the Limb Type');
 </script>
             <?php
-        }elseif (($tbl=="other") && ($ortho=="0")) {
+        }elseif (($tbl=="other") && ($ortho=="")) {
             $type = $ortho;
             ?>
 <script lang="javascript">
     alert('Please select the Limb Type');
-     window.location ="confirm.php";
+//     window.location ="confirm.php";
 </script>
             <?php
         }  else {
@@ -152,7 +152,7 @@ jQuery(function() {
       <div class="templatemo-sidebar">
         <?php  
 
-if($admin!="" )
+if($admin=="admin" )
 	
 	{include 'menu.php';}
 	
@@ -212,18 +212,24 @@ if($admin!="" )
 if ($mtable=="memberfoot") {
 $name = "Limb";
 $code = "J.F /";
+$detail = "whichleg";
+$mdetail = "aouk";
 }elseif ($mtable=="memberarm") {
         $name = "Arm";
         $code = "A.A /";
+        $detail = "whicharm";
+        $mdetail = "aobelbow";
     }elseif ($mtable=="memberother") {
         $name = "Other Appliance";
         $code = "O.A /";
+        $detail = "whicharmo";
+        $mdetail = "whichlego";
     }	
 			  
 			 ?>
 					  
 					 
-                      <td><?php echo $code." ".$id." / ".$rows['month']." / ".$rows['year']  ?>  </td> 
+                      <td><?php echo $code." ".$rows['regnum']." / ".$rows['month']." / ".$rows['year']  ?>  </td> 
 
 				  
                     </tr> 
@@ -276,11 +282,11 @@ $code = "J.F /";
 					<tr>
                   
                       <td>Cause Of Amputaion</td>
-                      <td> <?php echo $rows['reason'] ?></td>                    
+                      <td> <?php echo $rows['cause'] ?></td>                    
                     </tr>
                       <tr>
                    <td>About Limb</td>
-                      <td> <?php echo $rows['whichleg']." ".$rows['aouk'].$rows['whicharm']." ".$rows['aobelbow'].$rows['whichlego']." ".$rows['whicharmo']; ?></td>                    
+                      <td> <?php echo $rows[$detail]." - ". $rows[$mdetail]; ?></td>                    
                    	 </tr>
 					
 					<tr>
@@ -405,8 +411,8 @@ $code = "J.F /";
 <div class="col-lg-12  form-group">
                                            <div class="col-lg-6 col-md-6 form-group">                  
                                     <label for="inputUsername">Limb Type</label>
-                                     <select class="form-control" name = "limb" value="<?php  ?>">
-                                         <option value="0">--Select--</option>
+                                    <select class="form-control" name = "limb" value="<?php  ?>" required="">
+                                         <option value="">--Select--</option>
                                     <option value="B/K Plastic Limb">B/K Plastic Limb</option>
                                     <option value="B/K Aluminium Limb">B/K Aluminium Limb</option>
                                     <option value="B/K Leather Limb">B/K Leather Limb</option>
@@ -430,7 +436,7 @@ $code = "J.F /";
                                            <div class="col-lg-6 col-md-6 form-group">                  
                                     <label for="inputUsername">Orthotics Type</label>
                                      <select class="form-control" name = "ortho" value="<?php  ?>">
-                                         <option value="0">--Select--</option>
+                                         <option value="">--Select--</option>
                                     <option value="Long Leg Brace">Long Leg Brace</option>
                                     <option value="A.F.O">A.F.O</option>
                                     <option value="Below Knee Braces">Below Knee Braces</option>
