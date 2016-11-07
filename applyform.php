@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
@@ -17,16 +17,22 @@ $name = "Limb";
 $tbl = "foot";
 $code = "J.F /";
 $atr = "f_id";
+$detail = "whichleg";
+$mdetail = "aouk";
 }elseif ($table=="memberarm") {
         $name = "Arm";
         $code = "A.A /";
         $tbl = "arm";
         $atr = "arm_id";
+         $detail = "whicharm";
+        $mdetail = "aobelbow";
     }elseif ($table=="memberother") {
         $name = "Other Appliance";
         $code = "O.A /";
         $tbl = "other";
         $atr = "oa_id";
+         $detail = "whicharmo";
+        $mdetail = "whichlego";
     }
     
     $sqls = mysql_query("select regnum,$atr from $tbl where regnum = '$sid' and confirm = ''");
@@ -229,7 +235,7 @@ $code = "J.F /";
 					<tr>
                   
                       <td>About Limb</td>
-                      <td> <?php echo $rows['whichleg']." ".$rows['aouk'].$rows['whicharm']." ".$rows['aobelbow'].$rows['whichlego']." ".$rows['whicharmo']; ?></td>                    
+                      <td> <?php echo  $rows[$detail]." - ". $rows[$mdetail]; ?></td>                    
                     </tr>
 					
 					<tr>
@@ -329,13 +335,13 @@ $code = "J.F /";
                      
                     <div class="col-lg-6 col-md-6 form-group">                  
                     <label for="inputEmail">Sponsored By</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Sponser By" name = "spons" value="<?php echo $lname   ?>"> 
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Sponser By" name = "spons" value="<?php //echo $lname   ?>"> 
                    </div> 
                         
                         
                          <div class="col-lg-6 col-md-6 form-group">                  
                     <label for="inputEmail">Sponsored Amount</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Sponsord Amount" name = "sponsamnt" value="<?php echo $lname   ?>"> 
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Sponsord Amount" name = "sponsamnt" value="<?php //echo $lname   ?>"> 
                    </div>
                              
                           </div>
