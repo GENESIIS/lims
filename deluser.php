@@ -1,9 +1,9 @@
 <?php
 session_start();
 include ('connection.php');
-$user = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 
-if ($user!="") {
+if ($admin=="admin") {
     
      if (isset($_POST['delete'])) {
    $id = $_POST['hidid'];
