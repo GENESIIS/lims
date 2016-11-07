@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
@@ -18,16 +18,23 @@ $name = "Limb";
 $tbl = "foot";
 $code = "J.F /";
 $atr = "f_id";
+$detail = "whichleg";
+$mdetail = "aouk";
+
 }elseif ($table=="memberarm") {
         $name = "Arm";
         $code = "A.A /";
         $tbl = "arm";
         $atr = "arm_id";
+        $detail = "whicharm";
+        $mdetail = "aobelbow";
     }elseif ($table=="memberother") {
         $name = "Other Appliance";
         $code = "O.A /";
         $tbl = "other";
         $atr = "oa_id";
+        $detail = "whicharmo";
+        $mdetail = "whichlego";
     }
     
     
@@ -243,7 +250,7 @@ jQuery(function() {
 				  
 				    <tr>
                     <td><label for="inputFirstName">About Limb</label></td>
-                    <td colspan="4"> <?php echo $rows['whichleg']."  ".$rows['aouk'].$rows['whicharm']."  ".$rows['aobelbow'].$rows['whichlego']."  ".$rows['whicharmo']; ?></td>
+                    <td colspan="4"> <?php echo  $rows[$detail]." - ". $rows[$mdetail]; ?></td>
                    
                    
                   </tr>
@@ -357,208 +364,7 @@ jQuery(function() {
 			  
 <!--			      <table class="table table-striped table-bordered templatemo-user-table">
                 <thead>
-                  <tr>
-                    <th>MATERIALS USED </th>
-                    <td>QUANTITY </td>
-                    <td>WORKSHOP MANAGER</td>
-                    <td>QUANTITY ISSUED</td>
-                    <td>STORE KEEPER</td>
-                    <td>REMARKS</td>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>P.O.P Bandages</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-               
-                  <tr>
-                    <td>P.O.P Powder</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                
-                     <tr>
-                    <td>Polypropylene Sheets</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                   
-				     <tr>
-                    <td>Pelite Sheets</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                   
-				    <tr>
-                    <td>Aluminium Rivets</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				     <tr>
-                    <td>Screws</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				     <tr>
-                    <td>Corduroy Cloth</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				    <tr>
-                    <td>Jaipur Foot</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				   <tr>
-                    <td>Foot Piece Washer</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				   <tr>
-                    <td>Foot Piece Nut</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				     <tr>
-                    <td>Ankle Unit</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				    <tr>
-                    <td>A/K Joint</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				    <tr>
-                    <td>Socket Adaptor</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				     <tr>
-                    <td>Iron Rivets 1/2"</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				    <tr>
-                    <td>Aluminium Rivets 3.4</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				     <tr>
-                    <td>Wire Nail 3"</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                        
-						   <tr>
-                    <td>G.I. Bolts & Nut 3/16-2"</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				  	   <tr>
-                    <td>G.I. Bolts & Nut 3/16-2"</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-				  
-				    <tr>
-                    <td>Loops</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                                       
-                </tbody>
+                 
               </table>  
 			  -->
 <!--			  //<?php
@@ -593,44 +399,7 @@ jQuery(function() {
 //           ?> -->
 			 
 			 
-<!--			 
-			   </div>
-			   
-			   <div class="row">
-			 
-			 <div class="col-lg-12 ">
-			 
-			  <table class="table table-striped table-bordered templatemo-user-table">
-			 
-			 <tbody>
-			 
-			 <thead>
-                  <tr>
-                    <td>Kind of Device </td>
-                    <td>Date of Casting </td>
-                    <td>Date of 1st Try </td>
-                    <td>Date of Delivery </td>
-                    <td>Technician </td>
-                   
-                  </tr>
-                </thead>
-			  </tr>
-				  
-				    <tr>
-                    <td>  <br>  <br><br><br><br> </td>
-					<td>  <br>  <br><br><br><br>   </td>
-					<td>  <br>  <br><br><br><br>   </td>
-					<td>  <br>  <br><br><br><br>   </td>
-					<td>  <br>  <br><br><br><br>   </td>
-                   
-                    
-                    
-                  </tr>
-			 
-			 
-			 </tbody>
-			 
-			 </table>-->
+
                              <a href="javascript:window.print()" class="templatemo-blue-button noprint">Print</a>
                              <a href="pending.php" class="templatemo-blue-button noprint">   Back</a>
 			  </div>
@@ -669,5 +438,7 @@ jQuery(function() {
 }
 
 ?>
+
+    
 
     
