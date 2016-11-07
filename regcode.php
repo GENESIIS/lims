@@ -1,13 +1,33 @@
 <?php
-session_start();
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+//$admin = $_SESSION['adminname'];
 $user = $_SESSION['username'];
 
 
 if (($user!="")) {
 
 $cdate = date("Y.m.d");
+
+$month = date('m');
+    $yr = date("Y");
+    
+ $date =$district =$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
+       $birthyr = $age =  $gender =  $number =$edu = $fmemb =  $emp = $pemp =$adate = "";
+         
+          
+        $erleg=$erknee =$hos = $doc =  $anyother =$aftramp =  $voc = $ftcause = $leg = $knee = $acause = $arm =  $elbow = "";
+          
+       $erarm = $ocause= $other = $oarm= $oleg = "";
+        
+        
+     $erdis = $ertil = $erfnsme =$erad =$ersge =$ergen = $ernum = "";
+
 
 if (isset($_POST['save']))
     
@@ -64,7 +84,7 @@ if (isset($_POST['save']))
           
           
 
-             if (($nic!="")&& (strlen($nic)<10)) {
+             if (($nic!="")&& (strlen($nic)<=10)) {
                  ?>
 <script>
     alert("Please Insert A Valied NIC number ");
