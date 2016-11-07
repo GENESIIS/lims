@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 if (($admin!="") || ($user!="")) {
