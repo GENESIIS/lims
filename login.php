@@ -52,16 +52,7 @@ include 'log_code.php';
 		          	</div>	
 	        	</div>	 
 
-				<!--div class="form-group">
-	        		<div class="input-group">
-		        		<div class="input-group-addon"><i class="fa fa-users fa-fw"></i></div>	        		
-		              	<select class="form-control" name="level"><?php echo $erlvl  ?>
-						<option value="0" disabled selected>Select User Level </option>
-                    <option  name="admin" value="admin">Admin</option>
-                    <option  name="admin"  value="user">User</option>                     
-                  </select>       
-		          	</div><?php echo $erlvl  ?> 	
-	        	</div-->					
+									
 	          	<div class="form-group">
 				    <div class="checkbox squaredTwo">
 				        <input type="checkbox" id="c1" name="cc" />
