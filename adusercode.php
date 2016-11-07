@@ -1,15 +1,21 @@
 <?php
-session_start();
-include ('connection.php');
-$user = $_SESSION['adminname'];
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 
-if ($user!="") {
-    $date = date(Y.m.j);
+include ('connection.php');
+$user = $_SESSION['level'];
+
+$pwer= $repwer = "";
+
+if ($user=="admin") {
+    $date = date('Y.m.d');
                     if(isset($_POST['register']))    
                 {
 
                     $uname = $_POST['username'];
-                   $level = $_POST['level'];
+                   $level = $_POST['lvl'];
                     $pw = $_POST['pasword'];
                     $repw = $_POST['rpw'];
 
@@ -19,7 +25,7 @@ if ($user!="") {
                         $pwer= "Please Enter a Password";
                     }elseif ($pw!= $repw) {
                         $repwer= "Your Password Does not Match";
-                    }elseif ($level == "") {
+                    }elseif ($level == "0") {
                         $erlvl = "Please select Level";
                       
                     } else { 
