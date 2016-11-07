@@ -1,11 +1,26 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
-if (($user!="") || ($admin!="")) {
+if (($admin=="admin")) {
+    
+     $date =$district =$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
+       $birthyr = $age =  $gender =  $number =$edu = $fmemb =  $emp = $pemp =$adate = "";
+         
+          
+        $erleg=$erknee =$hos = $doc =  $anyother =$aftramp =  $voc = $ftcause = $leg = $knee = $acause = $arm =  $elbow = "";
+          
+       $erarm = $ocause= $other = $oarm= $oleg = "";
+        
+        
+     $erdis = $ertil = $erfnsme =$erad =$ersge =$ergen = $ernum = "";
+    
  $sid = $_SESSION['id'];
  $table = $_SESSION['table'];
 
@@ -42,12 +57,12 @@ $rows = mysql_fetch_array($rslt);
          $fmemb = $_POST['fmemb'];
          $emp = $_POST['emp'];
          $pemp = $_POST['pemp'];
-         echo $adate = $_POST['adate'];
+         $adate = $_POST['adate'];
          
           
           $hos = $_POST['hos'];
           $doc = $_POST['doc'];
-          $anyother = $_POST['otds'];
+          $anyother = $_POST['otdis'];
           $aftramp = $_POST['afteramp'];
           $voc =$_POST['voc'];
           
@@ -92,6 +107,7 @@ $rows = mysql_fetch_array($rslt);
         
             if ($ftcause!="") {
                 $table = "memberfoot";
+                $pre = "J/F";
         if ($leg=="") {
             $erleg = "Please Select Leg";
         }elseif ($knee == "") {
@@ -109,6 +125,7 @@ $rows = mysql_fetch_array($rslt);
         
 if ($acause!="") {
             $table = "memberarm";
+            $pre = "A/A ";
     if ($arm=="") {
         $erarm = "Please Select Arm";
     }elseif ($elbow == "") {
@@ -128,6 +145,7 @@ if ($acause!="") {
                                                                                             
                      if ($ocause!="") {
                     $table = "memberother";
+                    $pre = "O/A ";
                                 if (($oarm=="") || ($oleg == "")) {
                                     $erother = "Please Select Arm Or Leg";
                                 }  
@@ -149,11 +167,11 @@ if ($acause!="") {
                                                                     
                                                                     
 								?>
-                                      <input type='hidden' id='myText' value="<?php echo $nid ?>"/>
+                                      <input type='hidden' id='myText' value="<?php echo $pre."/".$sid ?>"/>
                                      
                                                             <script>
                                                                 var myvar1 = document.getElementById("myText");
-                                                                alert('Successfully Updated' + myvar1.value);
+                                                                alert('Successfully Updated     ' + myvar1.value);
                                                               window.location = "apply.php";
                                                             </script>
                                                             
@@ -161,7 +179,7 @@ if ($acause!="") {
                                                                  
 
                             } else {
-                              echo "<script type='text/javascript'>alert('failed!')</script>";
+                              echo "<script type='text/javascript'>alert('failed to Update details!')</script>";
                                     }
                 }
              
@@ -392,7 +410,7 @@ $code = "J.F /";
 				<div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputLastName">Religion </label>
                      <select class="form-control" name = "religion" >
-					 <option value="<?php echo $rows['relegion'] ?>"selected><?php echo $rows['relegion'] ?></option>
+					 <option value="<?php echo $rows['religion'] ?>"selected><?php echo $rows['religion'] ?></option>
                     <option value="Budhist">Budhist</option>
                     <option value="Christian">Christian</option> 
                     <option value="Islam">Islam</option>
@@ -522,10 +540,16 @@ $code = "J.F /";
                                                                      <?php
                                                                                 if ($rows['whichleg'] == "Left Leg") {
                                                                                     $lleg = "checked";
+                                                                                    $rleg = "";
+                                                                                    $bleg = "";
                                                                                 } elseif ($rows['whichleg'] == "Right Leg") {
                                                                                 $rleg = "checked";
+                                                                                $lleg = "";
+                                                                                $bleg = "";
                                                                             }  else {
-                                                                            $bleg = "checked";    
+                                                                            $bleg = "checked";  
+                                                                            $rleg = "";
+                                                                                    $bleg = "";
                                                                             }
                                                                         
                                                                         ?>
@@ -549,8 +573,10 @@ $code = "J.F /";
                                                                                 <?php
                                                                                 if ($rows['aouk'] == "Under Knee") {
                                                                                     $ak = "checked";
+                                                                                    $bk = "";
                                                                                 } else {
                                                                                 $bk = "checked";
+                                                                                $ak="";
                                                                             } 
                                                                         
                                                                         ?>           
