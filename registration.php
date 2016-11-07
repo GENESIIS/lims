@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('connection.php');
-//$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
@@ -330,7 +330,7 @@ include 'menuuser.php';
                 </div>
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputConfirmNewPassword">What will You do after the Amputation</label>
-                    <input type="text" class="form-control" id="inputNote" rows="2" name = "afteramp" placeholder="" value="<?php echo $case   ?>">
+                    <input type="text" class="form-control" id="inputNote" rows="2" name = "afteramp" placeholder="" value="<?php echo $aftramp   ?>">
                 </div> 
 				
 				  <div class="col-lg-4 col-md-4 form-group">                  
@@ -406,15 +406,15 @@ include 'menuuser.php';
 
 
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php echo $left ?>>
+                                                                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php //echo $left ?>>
                                                                       <label for="r1" class="font-weight-400"><span></span>Left Leg</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="leg"  value="Right Leg"  id="r2" <?php echo $right ?>>
+                                                                      <input type="radio" name="leg"  value="Right Leg"  id="r2" <?php //echo $right ?>>
                                                                       <label for="r2" class="font-weight-400"><span></span>Right Leg</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="leg"  value="Both"  id="r4" <?php echo $both ?>>
+                                                                      <input type="radio" name="leg"  value="Both"  id="r4" <?php //echo $both ?>>
                                                                       <label for="r4" class="font-weight-400"><span></span>Both Legs</label>
                                                                     </div>
 
@@ -423,11 +423,11 @@ include 'menuuser.php';
                                                                                         <div class="col-lg-6 col-md-6 form-group"> 
 
                                                                                           <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="knee"  value="Above Knee" id="r5" <?php echo $below ?>>
+                                                                      <input type="radio" name="knee"  value="Above Knee" id="r5" <?php// echo $below ?>>
                                                                       <label for="r5" class="font-weight-400"><span></span>Above Knee</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="knee"  value="Below Knee" id="r6" <?php echo $under ?> >
+                                                                      <input type="radio" name="knee"  value="Below Knee" id="r6" <?php //echo $under ?> >
                                                                       <label for="r6" class="font-weight-400"><span></span>Below Knee</label>
                                                                     </div>
 
@@ -467,15 +467,15 @@ include 'menuuser.php';
 
 
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="arm"  value="Left Arm" id="r7" <?php echo $left ?>>
+                                                                      <input type="radio" name="arm"  value="Left Arm" id="r7" <?php //echo $left ?>>
                                                                       <label for="r7" class="font-weight-400"><span></span>Left Arm</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="arm"  value="Right Arm"  id="r8" <?php echo $right ?>>
+                                                                      <input type="radio" name="arm"  value="Right Arm"  id="r8" <?php //echo $right ?>>
                                                                       <label for="r8" class="font-weight-400"><span></span>Right Arm</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="arm"  value="Both"  id="r9" <?php echo $both ?>>
+                                                                      <input type="radio" name="arm"  value="Both"  id="r9" <?php //echo $both ?>>
                                                                       <label for="r9" class="font-weight-400"><span></span>Both Arms</label>
                                                                     </div>
 
@@ -484,11 +484,11 @@ include 'menuuser.php';
                                                                                         <div class="col-lg-6 col-md-6 form-group"> 
 
                                                                                           <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="elbow"  value="Above Elbow" id="r10" <?php echo $below ?>>
+                                                                      <input type="radio" name="elbow"  value="Above Elbow" id="r10" <?php //echo $below ?>>
                                                                       <label for="r10" class="font-weight-400"><span></span>Above Elbow</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="elbow"  value="Below Elbow" id="r11" <?php echo $under ?> >
+                                                                      <input type="radio" name="elbow"  value="Below Elbow" id="r11" <?php //echo $under ?> >
                                                                       <label for="r11" class="font-weight-400"><span></span>Below Elbow</label>
                                                                     </div>
 
@@ -535,15 +535,15 @@ include 'menuuser.php';
 
 
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="otherarm"  value="Left Arm" id="r12" <?php echo $left ?>>
+                                                                      <input type="radio" name="otherarm"  value="Left Arm" id="r12" <?php //echo $left ?>>
                                                                       <label for="r12" class="font-weight-400"><span></span>Left Arm</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="otherarm"  value="Right Arm"  id="r13" <?php echo $right ?>>
+                                                                      <input type="radio" name="otherarm"  value="Right Arm"  id="r13" <?php //echo $right ?>>
                                                                       <label for="r13" class="font-weight-400"><span></span>Right Arm</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="otherarm"  value="Both"  id="r14" <?php echo $both ?>>
+                                                                      <input type="radio" name="otherarm"  value="Both"  id="r14" <?php //echo $both ?>>
                                                                       <label for="r14" class="font-weight-400"><span></span>Both Arms</label>
                                                                     </div>
 
@@ -553,15 +553,15 @@ include 'menuuser.php';
 
 
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="otherleg"  value="Left Leg" id="r15" <?php echo $left ?>>
+                                                                      <input type="radio" name="otherleg"  value="Left Leg" id="r15" <?php //echo $left ?>>
                                                                       <label for="r15" class="font-weight-400"><span></span>Left Leg</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="otherleg"  value="Right Leg"  id="r16" <?php echo $right ?>>
+                                                                      <input type="radio" name="otherleg"  value="Right Leg"  id="r16" <?php //echo $right ?>>
                                                                       <label for="r16" class="font-weight-400"><span></span>Right Leg</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="otherleg"  value="Both"  id="r17" <?php echo $both ?>>
+                                                                      <input type="radio" name="otherleg"  value="Both"  id="r17" <?php //echo $both ?>>
                                                                       <label for="r17" class="font-weight-400"><span></span>Both Legs</label>
                                                                     </div>
 
@@ -626,12 +626,4 @@ include 'menuuser.php';
 ?>
 
     
-    
-
-    
-    
-    
-    
-    
-    
-    
+   
