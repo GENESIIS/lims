@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
@@ -146,5 +146,7 @@ if($admin != "" )
     <script type="text/javascript" src="js/templatemo-script.js"></script>        <!-- Templatemo Script -->
   </body>
 </html>
+
+
 
 
