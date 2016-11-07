@@ -1,7 +1,10 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
@@ -9,12 +12,34 @@ if (($user!="")) {
 
 $cdate = date("Y.m.d");
 
+ $date =$district = $regnumber=$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
+       $birthyr = $age =  $gender =  $number =$edu = $fmemb =  $emp = $pemp =$adate = "";
+         
+          
+        $erleg=$erknee =$hos = $doc =  $anyother =$aftramp =  $voc = $ftcause = $leg = $knee = $acause = $arm =  $elbow = "";
+          
+       $erarm = $ocause= $other = $oarm= $oleg = "";
+        
+        
+     $erdis = $ertil = $erfnsme =$erad =$ersge =$ergen = $ernum = "";
+
+
+
+
+
+
+
+
 if (isset($_POST['save']))
     
 {
    
     $month = date(m);
     $yr = date("Y");
+    
+    
+    
+    
     
   $regnumber = $_POST['rnumber'];
     $date = $_POST['date'];
