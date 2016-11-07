@@ -1,11 +1,15 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 
-if ($admin!="") {
+
+$ernm = $erlvl =$unm= $selus=$selad= $pwer=""; 
+
+if ($admin=="admin") {
     if (isset($_POST['edit'])) {
         
+      
       
         $eid = $_POST['hidid'];
         
