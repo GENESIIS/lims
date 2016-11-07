@@ -149,7 +149,7 @@ include 'menuuser.php';
                
                 ?>
                  <tr>
-                    <td> <label for="inputLastName"> No. Of Males Admitted  </label></td>
+<!--                    <td> <label for="inputLastName"> No. Of Males Admitted  </label></td>-->
                     <td> <?php  echo "J/F ".$row1['regnum']  ?></td>
                     <td> <?php  echo $row1['date']  ?></td>
                   
@@ -188,10 +188,10 @@ include 'menuuser.php';
                
                 ?>
                  <tr>
-                    <td> <label for="inputLastName"> No. Of Males Admitted  </label></td>
-                    <td> <?php  echo "J/F ".$row1['regnum'].$row1['month'].$row1['year']  ?></td>
+<!--                    <td> <label for="inputLastName"> No. Of Males Admitted  </label></td>-->
+                    <td> <?php  echo "J/F ".$row1['regnum']."/".$row1['month']."/".$row1['year']  ?></td>
                     <td> <?php  echo $row1['fname']." ".$row1['lname']  ?></td>
-                    <td> <?php  echo $row1['Cause']  ?></td>
+                    <td> <?php  echo $row1['cause']  ?></td>
                   </tr>   
            <?php     
             }
