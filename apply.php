@@ -1,18 +1,19 @@
 <?php
-session_start();
-include ('connection.php');
-$admin = $_SESSION['adminname'];
-$user = $_SESSION['username'];
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 
+    
+include ('connection.php');
+$admin = $_SESSION['level'];
+$user = $_SESSION['username'];
 //echo $register = $_SESSION[$row['regnum']];
  $sid = $_SESSION['id'];
  $table = $_SESSION['table'];
  include 'apply_code.php';
-
-
-
-if (($user!="") || ($admin!="")) {
  
+if (($user!="") || ($admin!="")) {
    
 
 ?>
@@ -77,7 +78,7 @@ jQuery(function() {
       <div class="templatemo-sidebar">
         <?php  
 
-if($admin!="" )
+if($admin=="admin" )
 	
 	{include 'menu.php';}
 	
@@ -94,7 +95,6 @@ if($admin!="" )
 ?>
 
 
-		?>
       </div>
       <!-- Main content -->
       <div class="templatemo-content col-1 light-gray-bg" id="reg">
@@ -139,16 +139,22 @@ if ($table=="memberfoot") {
 $name = "Limb";
 $code = "J.F /";
 $col= "f_id";
+$detail = "whichleg";
+$mdetail = "aouk";
 }elseif ($table=="memberarm") {
     $tbl = "arm";
         $name = "Arm";
         $code = "A.A /";
         $col= "arm_id";
+        $detail = "whicharm";
+        $mdetail = "aobelbow";
     }elseif ($table=="memberother") {
         $tbl = "other";
         $name = "Other Appliance";
         $code = "O.A /";
         $row= "oa_id";
+        $detail = "whicharmo";
+        $mdetail = "whichlego";
     }	
     
     
@@ -222,7 +228,7 @@ $col= "f_id";
                     </tr>
                       <tr>
                    <td>About Limb</td>
-                      <td> <?php echo $rows['whichleg']." ".$rows['aouk'].$rows['whicharm']." ".$rows['aobelbow'].$rows['whichlego']." ".$rows['whicharmo']; ?></td>                    
+                      <td> <?php echo  $rows[$detail]." - ". $rows[$mdetail]; ?></td>                    
                    	 </tr>
 					
 					<tr>
