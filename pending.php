@@ -1,25 +1,24 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
-
 
 
 if (($admin!="") || ($user!="")) {
     
     $pendingf = mysql_query("select count(f_id) as total from foot where confirm=''");
     $row1 = mysql_fetch_assoc($pendingf);
-     $num1 = $row1[total];
+     $num1 = $row1['total'];
     
      $pendingarm = mysql_query("select count(arm_id) as total from arm where confirm=''");
     $row2 = mysql_fetch_assoc($pendingarm);
-     $num2 = $row2[total];
+     $num2 = $row2['total'];
       
      
       $pendingo = mysql_query("select count(oa_id) as total from other where confirm=''");
     $row3 = mysql_fetch_assoc($pendingo);
-     $num3 = $row3[total];
+     $num3 = $row3['total'];
      
     
 ?>
