@@ -1,17 +1,19 @@
 <?php
-session_start();
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
+
+if ( ($admin=="")) {
+    header("Location: login.php");
+}
+
 
         include 'searchcode.php';
        
-    
-    
-    
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +69,11 @@ $(function() {    // Makes sure the code contained doesn't run until
       <div class="templatemo-sidebar">
         <?php  
 
-if($admin!="" )
+if($admin=="admin" )
 	
 	{include 'menu.php';}
 	
-	elseif ($user != "" )
+	elseif ($admin == "user" )
 	{include 'menuuser.php';}  else {
     ?>
 <script language ="javascript">
@@ -108,7 +110,7 @@ if($admin!="" )
             <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputFirstName">NIC Number</label>
-                    <input type="text" class="form-control" name="nic" id="inputFirstName" placeholder="ID Number" value="<?php echo $id ?> "> <?php echo $erno ?>                 
+                    <input type="text" class="form-control" name="nic" id="inputFirstName" placeholder="ID Number" value="<?php echo $nic ?>"> <?php echo $erno ?>                 
                 </div>
                 
               </div>
