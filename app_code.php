@@ -1,11 +1,10 @@
 <?php
-session_start();
+
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
-
- if (($user!="") || ($admin!="")) {
+if (($user!="") || ($admin!="")) {
     
     $date = date("Y.m.d");
    $sid = $_SESSION['id'];
@@ -49,33 +48,7 @@ $user = $_SESSION['username'];
            <?php   
         }
         
-        
-        
-        
-        
-//        
-//    
-//        $sqllimb = mysql_query("INSERT INTO `arm`(`arm_id`, `regnum`, `date`, `admiton`, `outpatient`, `dischrg`, `trainin`, `amputepay`,
-//            `spons`, `sponspaid`, `observation`, `recomand`, `confirm`, `condate`, `crton`, `crtby`, `modon`, `modby`)
-//            VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],
-//            [value-7],[value-8],[value-9],[value-10],[value-11],[value-12],[value-13],[value-14],[value-15],[value-16],[value-17],[value-18])");
-//        
-//        
-//    }  else {
-//        
-//        $sqllimb = mysql_query("INSERT INTO `other`(`oa_id`, `regnum`, `date`, `admiton`, `outpatient`, `dischrg`, `trainin`, `amputepay`,
-//            `spons`, `sponspaid`, `observation`, `recomand`, `confirm`, `condate`, `crton`, `crtby`, `modon`, `modby`) 
-//            VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],
-//            [value-8],[value-9],[value-10],[value-11],[value-12],[value-13],[value-14],[value-15],[value-16],[value-17],[value-18])");
-//        
-//    }
-    
-    
-    
-    
-        
-        
-        
+
          
 }  else {
     ?>
@@ -85,5 +58,5 @@ $user = $_SESSION['username'];
 
 <?php
 }
-
+           
 ?>
