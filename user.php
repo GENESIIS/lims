@@ -1,9 +1,9 @@
 <?php
 session_start();
 include ('connection.php');
-$admin = $_SESSION['adminname'];
+$admin = $_SESSION['level'];
 
-if ($admin!="") {
+if ($admin=="admin") {
     include 'deluser.php';
 
 ?>
