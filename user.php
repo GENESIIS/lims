@@ -3,7 +3,7 @@ session_start();
 include ('connection.php');
 $admin = $_SESSION['level'];
 
-if ($admin=="admin") {
+if ($admin=="super") {
     include 'deluser.php';
 
 ?>
@@ -42,7 +42,7 @@ if ($admin=="admin") {
       <div class="templatemo-sidebar">
         <?php  
 
-include 'menu.php';
+include 'smenue.php';
 
 
 		?>
@@ -64,16 +64,18 @@ include 'menu.php';
         <div class="templatemo-content-container">
 		
 		
-		
+		 <h2 class="margin-bottom-10">User Details</h2>
 					                    <div class="templatemo-content-widget no-padding">
+                                                               
             <div class="panel panel-default table-responsive">
               <table class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by"># <span class=""></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">User Name <span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">User Level <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">Created <span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">Created by<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text templatemo-sort-by">Created on<span class="caret"></span></a></td>
                     <td>Edit</td>
                     <td>Delete</td>
                   </tr>
@@ -81,14 +83,15 @@ include 'menu.php';
                 <tbody>
                     <?php   
                     
-                    $rslt= mysql_query("select * from user");
+                    $rslt= mysql_query("select * from user WHERE `userid`!='1'");
                     while ($row = mysql_fetch_array($rslt)) {
                     ?>
                       <tr>
                           <td><?php echo $row['userid'] ?> </td>
                     <td><?php echo $row['username'] ?></td>
                     <td><?php echo $row['userlevel'] ?></td>
-                    <td><?php echo $row['crtby'].$row['crton']?></td>
+                    <td><?php echo $row['crtby']?></td>
+                    <td><?php echo $row['crton']?></td>
                
                      <td>
                           <form name="edit" method="post" action="edit_user01.php">
@@ -101,12 +104,26 @@ include 'menu.php';
               
                     <td>  <form name="delete" method="post">
                             <input type="hidden" name="hidid" value="<?php echo $row['userid'] ?>">
-                            <button type="submit" name="delete" class="templatemo-blue-button width-50"  >Delete</button>
+                            <button type="submit" name="delete" class="templatemo-blue-button width-50" onclick="return deleletconfig()" >Delete</button>
                     </form>
               </td>
                     
                   </tr>  
-                        
+                  
+                  <script>
+    function deleletconfig(){
+
+    var del=confirm("Are you sure you want to delete this record?");
+    if (del==true){
+       alert ("record deleted")
+    }else{
+        alert("Record Not Deleted")
+    }
+    return del;
+    }
+</script>
+                  
+                  
                       <?php  
                     }
                     
