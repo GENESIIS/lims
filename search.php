@@ -68,20 +68,13 @@ $(function() {    // Makes sure the code contained doesn't run until
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <?php  
-
-if($admin=="admin" )
-	
-	{include 'menu.php';}
-	
-	elseif ($admin == "user" )
-	{include 'menuuser.php';}  else {
-    ?>
-<script language ="javascript">
-    window.location = "login.php";
-    </script>
-
-<?php
-}
+ if ($admin=="super") {
+            include 'smenue.php';
+        }elseif ($admin=="admin") {
+            include 'menu.php';
+            }  else {
+              include 'menuuser.php';  
+            }
 
 ?>
 
