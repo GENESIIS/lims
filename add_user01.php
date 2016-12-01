@@ -28,6 +28,7 @@ if ($admin=="admin") {
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-style.css" rel="stylesheet">
+      <link href="css/error.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,6 +37,13 @@ if ($admin=="admin") {
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+    .form-group.required .control-label:after { 
+   content:"*";
+   color:red;
+}
+    </style>
+    
   </head>
   <body>
     <!-- Left column -->
@@ -67,64 +75,65 @@ include 'menu.php';
 		
 		
  <div class="templatemo-content-widget white-bg">
-          
+          <h2 class="margin-bottom-10">Add new User</h2>
+          <h2 class="margin-bottom-10"></h2>
             <form  class="templatemo-login-form" name="adminuser" method="post">
 			
-			  <div class="row form-group">
+			  <div class="row form-group required ">
                 <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputFirstName">Frist Name </label>
-                   <input type="text" class="form-control" placeholder="Frist Name" name="fname" value="<?php //echo $uname  ?>">    
-<label for="inputFirstName"><?php echo $ernm  ?> </label>				   
+                    <label for="inputFirstName" class='control-label'>Frist Name</label>
+                    <input type="text" class="form-control" placeholder="Frist Name" name="fname" value="<?php echo $fname  ?>" required="required">    
+            <div class="error"><span></span><?php echo $erfnm ?></div>				   
                 </div>
-               <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputFirstName">Last Name </label>
-                   <input type="text" class="form-control" placeholder="Last Name" name="lname" value="<?php //echo $uname  ?>">    
-<label for="inputFirstName"><?php echo $ernm  ?> </label>				   
+               <div class="col-lg-6 col-md-6 form-group required">                  
+                    <label for="inputFirstName" class='control-label'>Last Name </label>
+                    <input type="text" class="form-control" placeholder="Last Name" name="lname" value="<?php echo $lname  ?>" required="">    
+<div class="error"><span></span><?php echo $erlnm  ?></div>		   
                 </div>
 				
               </div>
 			
               <div class="row form-group">
-                <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputFirstName">User Name </label>
-                   <input type="text" class="form-control" placeholder="User Name" name="username" value="<?php echo $uname  ?>">    
-<label for="inputFirstName"><?php echo $ernm  ?> </label>				   
+                <div class="col-lg-6 col-md-6 form-group required">                  
+                    <label for="inputFirstName" class='control-label'>User Name </label>
+                    <input type="text" class="form-control" placeholder="User Name" name="username" value="<?php echo $uname  ?>" required="">    
+                   <div class="error"><span></span><?php echo $erunm  ?></div>
                 </div>
-                  <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputLastName">Select User Level </label>
+                  
+                  <div class="col-lg-6 col-md-6 form-group required">                  
+                    <label for="inputLastName" class='control-label'>User Level </label>
                   	<select class="form-control" name="lvl"><?php echo $erlvl  ?>
-						<option value="0" disabled selected>Select User Level </option>
+						<option value="<?php echo $level ?>" selected><?php echo $level ?></option>
                     <option  name="admin" value="admin">Admin</option>
                     <option  name="admin"  value="user">User</option>                     
                   </select>  
-
-<label for="inputLastName"><?php echo $erlvl  ?> </label>				  
+                        <div class="error"><span></span><?php echo $erlvl ?></div>
+				  
                 </div> 
 			
                
 				
               </div>
 			  
-			   <div class="row form-group">
-                               <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputLastName">Password </label>
-                  <input type="password" class="form-control" placeholder="Password" name="pasword"> 
-
-<label for="inputFirstName"><?php echo $pwer  ?>  </label>                 
+			   <div class="row form-group ">
+                               <div class="col-lg-6 col-md-6 form-group required">                  
+                    <label for="inputLastName" class='control-label'>Password </label>
+                    <input type="password" class="form-control" placeholder="Password" name="pas" value="<?php echo $password  ?>" required=""> 
+                         <div class="error"><span></span><?php echo $pwer ?></div>
                 </div> 
-                <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputFirstName">ReEnter Password </label>
-                   <input type="password" class="form-control" placeholder="ReEnter Password" name="rpw">    
-<label for="inputFirstName"><?php echo $repwer  ?>  </label>				   
+                <div class="col-lg-6 col-md-6 form-group required">                  
+                    <label for="inputFirstName" class='control-label'>Confirm Password </label>
+                    <input type="password" class="form-control" placeholder="ReEnter Password" name="rpw" required="">    
+                   <div class="error"><span></span><?php echo $repwer ?></div>
+                 <div class="text-right  form-group required"><label for="inputFirstName" class='control-label'>Required fields </label>
+               
+              </div> 
                 </div>
                 	
               </div>
-			  
-			  
-          
-		
+		 
 
-<div class="form-group text-right">
+                <div class="form-group text-right">
                 <button type="submit" name="register" class="templatemo-blue-button">Register</button>
                 <button type="reset" class="templatemo-white-button">Reset</button>
               </div> 			  
