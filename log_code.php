@@ -5,6 +5,8 @@ include 'connection.php';
 $er1="";
 $ernm="";
 $erpw="";
+//$_POST["remember_me"] = 
+//$_POST["remember_me"]="";
 
 
 if(isset($_POST['btnlog']))
@@ -27,11 +29,19 @@ if(isset($_POST['btnlog']))
                                  
                                  $row = mysql_fetch_array($rslt);
                                  
-                                // echo $row["userid"];
+                               
                                     
                                        if (mysql_num_rows($rslt)>= 1){
                                            
-                                     // echo "case";   
+                                            
+                                    if(isset($_POST['remember_me'])=='1')
+                                        {
+                                        $hour = time() + 3600 * 24 * 30;
+                                        setcookie('username', $username, $hour);
+                                             setcookie('password', $password, $hour);
+                                             //header("Location:login.php");
+                                            
+                                        } 
                                       
                                       $userl =  $row["userlevel"];
                                       
@@ -41,10 +51,9 @@ if(isset($_POST['btnlog']))
                                       $_SESSION['username'] = $username;   
                                         ?>
                             <script language="javascript">
-                            window.location = "adminindex.php";
+                            window.location = "pending.php";
                             </script>
-                            <?php   
-                                       echo " you are admin"  ; 
+                           <?php    
                                       }
                                       
                                 elseif($userl == "user") {
@@ -54,17 +63,29 @@ if(isset($_POST['btnlog']))
                            <script language="javascript">
                              window.location = "registration.php";
                             </script>
-                            <?php 
-                                   echo " you are user"  ;  
-                                }
-                            ?>
-                            
-                            <?php
+                           <?php 
+                                     
+                                }elseif ($userl=="super admin") {
+                                    $_SESSION['level'] = "super"; 
+                                     $_SESSION['username'] = $username;
+                                               ?>
+                           <script language="javascript">
+                             window.location = "user.php";
+                            </script>
+                           <?php 
+                                   
+                                    }
+                          
+                                
                               }
                               
                                else {
                                                     $er1 =  "Please Enter correct User Name or Password";    
                                                 }
+                                                
+                                                
+
+
 }
 
 
