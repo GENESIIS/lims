@@ -14,8 +14,14 @@ $nic=$ernum=$erno="";
    
       $nic = $_POST['nic'];
       
-      
-      $sqlarm = mysql_query("select regnum,nic from memberarm where nic = '$nic'");
+      if ($nic=="") {
+                        ?>
+                            <script language="javascript">
+                                alert('Please Enter The NIC Number');
+                            </script>
+                            <?php
+      }  else {
+          $sqlarm = mysql_query("select regnum,nic from memberarm where nic = '$nic'");
       $sqlothr = mysql_query("select regnum,nic from memberother where nic = '$nic'");
       $sqlft = mysql_query("select regnum,nic from memberfoot where nic = '$nic'");
       
@@ -60,6 +66,10 @@ $nic=$ernum=$erno="";
     }  else {
     $erno = "No ID Number Found";    
     }
+          
+      }
+      
+      
       
       
 
