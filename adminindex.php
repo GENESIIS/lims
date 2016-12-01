@@ -69,9 +69,9 @@ if($admin != "" )
         </div>
         <div class="templatemo-content-container">
 		
-		
-		
-					                    <div class="templatemo-content-widget no-padding">
+		<h2 class="margin-bottom-10" align="center">User Details</h2>
+	<div class="templatemo-content-widget no-padding">
+                                                               
             <div class="panel panel-default table-responsive">
               <table class="table table-striped table-bordered templatemo-user-table">
                 <thead>
@@ -146,7 +146,5 @@ if($admin != "" )
     <script type="text/javascript" src="js/templatemo-script.js"></script>        <!-- Templatemo Script -->
   </body>
 </html>
-
-
 
 
