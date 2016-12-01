@@ -49,6 +49,7 @@ if (($user!="")) {
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+ <link href="css/error.css" rel="stylesheet">
 
 <script>
 
@@ -98,7 +99,7 @@ $(document).ready(function(){
 
 
 jQuery(function() {
-    jQuery( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true, yearRange : '-90:yy+1'});
+    jQuery( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true, yearRange : '-90:yy+1', maxDate: '-1Y'});
     
 });
 jQuery(function() {
@@ -111,13 +112,28 @@ jQuery(function() {
 
 </script>
    
+ <style>
+    .form-group.required .control-label:after { 
+   content:"*";
+   color:red;
+}
+    </style>
+
+
   </head>
   <body>
     <!-- Left column -->
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
-        <?php  
-include 'menuuser.php';
+        <?php
+        if ($admin=="super") {
+            include 'smenue.php';
+        }elseif ($admin=="admin") {
+            include 'menu.php';
+            }  else {
+              include 'menuuser.php';  
+            }
+
 
 
 		?>
@@ -148,14 +164,15 @@ include 'menuuser.php';
              <form  class="templatemo-login-form" method="post" enctype="multipart/form-data">
                 <div id="reg">
                   <div class="row form-group">
+                      <div class="error"><span></span><?php echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?></div>
                     <div class="col-lg-6 col-md-6 form-group">                  
                         <label for="inputLastName">Date </label>
                         <input type="text" class="form-control"  disabled="" placeholder="<?php echo date("Y.m.d") ?>" name = "date"  >                  
                     </div> 
                       
-                        <div class="col-lg-6 col-md-6 form-group">                  
-                         <label for="inputLastName">District </label>
-                         <select class="form-control" name = "district" required="">
+                        <div class="col-lg-6 col-md-6 form-group required">                  
+                            <label for="inputLastName" class="control-label">District </label>
+                         <select class="form-control" name = "district" required="Please select the District">
 <!--                                     <option value="" disabled selected>--Select-- </option>-->
                                      <option value="<?php  echo $district ?>"><?php  echo $district ?></option>
                                      
@@ -167,7 +184,8 @@ include 'menuuser.php';
                                         }
                                         ?>				
                               </select> 
-                  <label for="inputFirstName"> <?php echo $erdis  ?> </label>
+<!--                  <label for="inputFirstName" class="error"> <?php // echo $erdis  ?> </label>-->
+                  <div class="error"><span></span><?php echo $erdis  ?></div>
                     
                  </div>
               </div>
@@ -175,8 +193,8 @@ include 'menuuser.php';
                     
               <div class="row form-group">
 			  <div class="col-lg-12  form-group">
-                <div class="col-lg-2 col-md-2 form-group">                  
-                    <label for="inputUsername">Title</label>
+                <div class="col-lg-2 col-md-2 form-group required">                  
+                    <label for="inputUsername" class="control-label">Title</label>
                     <select class="form-control" name = "title" required="">
                          <option value="<?php echo $title ?>"selected><?php echo $title ?></option>
                     <option value="Mr">Mr.</option>
@@ -186,20 +204,20 @@ include 'menuuser.php';
                                 <option value="Rev.">Rev..</option> 				
                   </select>  
                     
-                    <label for="inputFirstName"> <?php echo $ertil  ?> </label>
+                    <label for="inputFirstName"> <div class="error"><span></span><?php echo $ertil  ?></div><?php //echo $ertil  ?> </label>
                 </div>
                               
                                
 				
-				<div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputUsername">First Name</label>
+				<div class="col-lg-4 col-md-4 form-group required">                  
+                    <label for="inputUsername" class="control-label">First Name</label>
                     <input type="text" class="form-control" id="inputUsername" placeholder="First Name" name = "fname" value="<?php echo $fname   ?>" required="">   
                     <label for="inputFirstName"> <?php echo $erfnsme  ?> </label>
                 </div>
 				
 				 
-                <div class="col-lg-6 col-md-6 form-group">                  
-                    <label for="inputEmail">Last Name</label>
+                <div class="col-lg-6 col-md-6 form-group required">                  
+                    <label for="inputEmail" class="control-label">Last Name</label>
                     <input type="text" class="form-control" id="inputEmail" placeholder="Last name" name = "lname" required="" value="<?php echo $lname   ?>"> 
                   
                 </div> 
@@ -207,7 +225,7 @@ include 'menuuser.php';
 				</div>
               </div>
 			  
-			    <div class="row form-group">
+			    <div class="row form-group required">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Address</label>
                     <textarea class="form-control" id="inputNote" rows="3" name = "address" placeholder="Address..." required=""><?php echo $address   ?></textarea>
@@ -220,9 +238,24 @@ include 'menuuser.php';
                      <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputFirstName">ID Number </label>
-                    <input  type="text" class="form-control" id="inputFirstName" placeholder="NIC num" name = "nic" value="<?php echo $nic   ?>">  
+                    <input  onblur="myFunction1()" type="text" class="form-control" id="nc" name ="nic" value="<?php echo $nic   ?>" maxlength="10">  
+                    
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
                 </div>
+                        <script>
+//                            function checkLength(el) {
+//                                    if (el.value.length != 10) {
+//                                      alert("length must be exactly 10 characters")
+//                                    }
+//                                  }
+                            function myFunction1() {
+                        var y = document.getElementById("nc").value;
+                        if((y.length!=10) || (isNaN(y))){
+                            alert('Please enter a valied NIC Number');
+                        }
+                    }
+              
+                    </script>
                         
                          
                 <div class="col-lg-4 col-md-4 form-group">                  
@@ -238,7 +271,7 @@ include 'menuuser.php';
 									
                   </select>     
                     
-                     <label for="inputFirstName"> <?php echo $ergen  ?> </label>
+                   
                 </div> 
 				<div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputLastName">Religion </label>
@@ -251,20 +284,19 @@ include 'menuuser.php';
 									
                   </select>     
                     
-                     <label for="inputFirstName"> <?php echo $ergen  ?> </label>
                 </div>
               </div>
                     
                     
 			  
 			   <div class="row form-group">
-                <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputFirstName">Date Of Birth </label>
+                <div class="col-lg-4 col-md-4 form-group required">                  
+                    <label for="inputFirstName" class="control-label">Date Of Birth </label>
                     <input type="text" class="form-control" id="datepicker" placeholder="DOB" name = "dob" value="<?php echo $dob  ?>" required="">  
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
-                </div>
-                <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputLastName">Gender </label>
+               </div>
+                <div class="col-lg-4 col-md-4 form-group required">                  
+                    <label for="inputLastName" class="control-label">Gender </label>
                      <select class="form-control" name = "gender" value="<?php echo $gender   ?>">
 					 <option value="<?php echo $gender ?>"  selected><?php echo $gender ?></option>
                     <option value="Male">Male</option>
@@ -274,13 +306,24 @@ include 'menuuser.php';
                     
                      <label for="inputFirstName"> <?php echo $ergen  ?> </label>
                 </div> 
-				<div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputLastName">Phone Number </label>
-                    <input type="number" class="form-control" id="inputLastName" required="" placeholder="Phone Number" name = "number" value="<?php echo $number   ?>">    
+				<div class="col-lg-4 col-md-4 form-group required">                  
+                    <label for="inputLastName" class="control-label">Phone Number </label>
+                    <input type="tel" class="form-control" id="tel" required=""  onblur="myFunction()" placeholder="Phone Number" name = "number" value="<?php echo $number ?>" maxlength="10">    
                     <label for="inputFirstName"> <?php echo $ernum ?> </label>
                 </div>
               </div>
 		
+                    <script>
+                    function myFunction() {
+                        var x = document.getElementById("tel").value;
+                        if((x.length!=10) || (isNaN(x))){
+                            alert('Please enter a valied Phone Number');
+                        }
+                    }
+                </script>
+                    
+                    
+                    
               <div class="row form-group">
                 <div class="col-lg-6 col-md-6 form-group">                  
                     <label for="inputNewPassword">Education</label>
@@ -324,7 +367,7 @@ include 'menuuser.php';
                      <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputNewPassword">Any Other Diseases? </label>
-                       <input type="text" class="form-control" id="inputNote" placeholder="Other Diseases?" name = "otdis" value="<?php echo $anyother   ?>" > 
+                       <input type="text" class="form-control" id="inputNote" placeholder="Other Diseases?" name ="otdis" value="<?php echo $anyother   ?>" > 
                        
                        
                 </div>
@@ -365,6 +408,7 @@ include 'menuuser.php';
                         
                     </div>
                     
+                    
                      <!--button type="submit" class="templatemo-blue-button" name = "save">Save</button-->
                    <input type="button" class="templatemo-blue-button" id="ft" name="ft" value="Foot">
                    <input type="button" class="templatemo-blue-button" id="arm" name="arm" value="Arm">
@@ -372,14 +416,15 @@ include 'menuuser.php';
 			 </div>	
                           </div>
                     
-                </div>
+                </div><div class="error"><span></span><?php echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?></div>
+                 <?php// echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?>
                           <br><br><br><br>
                                       <div class="row form-group" id="foot" style="display: none">
                               
                                           <div class="col-lg-12  form-group">
-                                <div class="col-lg-6 col-md-6 form-group">                  
-                                    <label for="inputUsername">cause of amputation</label>
-                                     <select class="form-control" name = "footcause" value="<?php    ?>">
+                                <div class="col-lg-6 col-md-6 form-group required">                  
+                                    <label for="inputUsername" class="control-label">cause of amputation</label>
+                                     <select class="form-control" name = "footcause">
                                          <option value="0">--Select--</option>
                                     <option value="Road Accident">Road Accident</option>
                                     <option value="Train Accident">Train Accident</option>
@@ -401,12 +446,12 @@ include 'menuuser.php';
                                                 </div>
                               
                                                                               <div class="row form-group">
-
+                                                                        
                                                                 <div class="col-lg-6 col-md-6 form-group"> 
 
 
                                                                     <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php //echo $left ?>>
+                                                                      <input type="radio" name="leg"  value="Left Leg" id="r1" <?php //echo $left ?> >
                                                                       <label for="r1" class="font-weight-400"><span></span>Left Leg</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
@@ -417,13 +462,15 @@ include 'menuuser.php';
                                                                       <input type="radio" name="leg"  value="Both"  id="r4" <?php //echo $both ?>>
                                                                       <label for="r4" class="font-weight-400"><span></span>Both Legs</label>
                                                                     </div>
-
-                                                                                         </div><?php echo $erleg ?>
+                                                                               <div class="margin-right-15 templatemo-inline-block">
+                                                                      <?php echo $erleg ?>
+                                                                    </div>                 
+                                                                                         </div>
 
                                                                                         <div class="col-lg-6 col-md-6 form-group"> 
 
                                                                                           <div class="margin-right-15 templatemo-inline-block">
-                                                                      <input type="radio" name="knee"  value="Above Knee" id="r5" <?php// echo $below ?>>
+                                                                      <input type="radio" name="knee"  value="Above Knee" id="r5" >
                                                                       <label for="r5" class="font-weight-400"><span></span>Above Knee</label>
                                                                     </div>
                                                                     <div class="margin-right-15 templatemo-inline-block">
@@ -444,9 +491,9 @@ include 'menuuser.php';
                 <div class="row form-group" id="arms" style="display: none">
                     
                                                       <div class="col-lg-12  form-group">
-                                           <div class="col-lg-6 col-md-6 form-group">                  
-                                    <label for="inputUsername">cause of amputation</label>
-                                     <select class="form-control" name = "armcause" value="<?php  ?>">
+                                           <div class="col-lg-6 col-md-6 form-group required">                  
+                                    <label for="inputUsername" class="control-label">cause of amputation</label>
+                                     <select class="form-control" name = "armcause">
                                          <option value="0">--Select--</option>
                                     <option value="Accident">Accident</option>
                                     <option value="From Birth">From Birth</option>  
@@ -508,9 +555,9 @@ include 'menuuser.php';
                 
                 <div class="row form-group" id="othr" style="display: none">
                                                       <div class="col-lg-12  form-group">
-                                           <div class="col-lg-6 col-md-6 form-group">                  
-                                    <label for="inputUsername">cause of Disability</label>
-                                     <select class="form-control" name = "othercause" value="<?php echo $title   ?>">
+                                           <div class="col-lg-6 col-md-6 form-group required">                  
+                                    <label for="inputUsername" class="control-label">cause of Disability</label>
+                                     <select class="form-control" name = "othercause" >
                                          <option value="0">--Select--</option>
                                     <option value="Accident">Accident</option>
                                     <option value="From Birth">From Birth</option>  
@@ -626,4 +673,4 @@ include 'menuuser.php';
 ?>
 
     
-   
+    
