@@ -5,28 +5,36 @@ if(!isset($_SESSION))
     } 
 
 include ('connection.php');
-$user = $_SESSION['level'];
+$user = $_SESSION['username'];
+$lvl = $_SESSION['level'];
 
-$pwer= $repwer = "";
+$pwer= $repwer =$erlnm =$erfnm=$fname=$lname=$erunm=$erpw= $level= $password ="";
 
-if ($user=="admin") {
+if ($lvl=="admin") {
     $date = date('Y.m.d');
                     if(isset($_POST['register']))    
                 {
 
+                    $fname = $_POST['fname'];
+                    $lname = $_POST['lname'];
                     $uname = $_POST['username'];
                    $level = $_POST['lvl'];
-                    $pw = $_POST['pasword'];
+                 $pw = $_POST['pas'];
                     $repw = $_POST['rpw'];
 
-                    if ($uname == "") {
-                        $ernm = "Please Enter User Name";            
-                    }elseif ($pw  == "") {
+                    if ($fname == "") {
+                        $erfnm = "Please Enter First Name";            
+                    }elseif ($lname  == "") {
+                        $erlnm= "Please Enter Last name";
+                    }elseif ($uname  == "") {
+                        $erunm= "Please Enter User name";
+                    }elseif ($level == "") {
+                        $erlvl = "Please select Level";
+                    }elseif ($pw == "") {
                         $pwer= "Please Enter a Password";
+                      
                     }elseif ($pw!= $repw) {
                         $repwer= "Your Password Does not Match";
-                    }elseif ($level == "0") {
-                        $erlvl = "Please select Level";
                       
                     } else { 
                         
@@ -40,22 +48,30 @@ if ($user=="admin") {
                       if ($count>=1)
 
                       {
-                          echo "User Name Already Exists";
+                          $erfnm= "User Name Already Exists";
                       }else{
 
-                     $sql = "INSERT INTO `user`(`username`, `userlevel`, `pw`, `crtby`, `crton`) 
-                         VALUES ('$uname','$level','$mdpw','$user','$date')";      
+                     $sql = "INSERT INTO `user`(`user_fname`, `user_lname`, `username`, `userlevel`, `pw`, `crtby`, `crton`) 
+                         VALUES ('$fname','$lname','$uname','$level','$mdpw','$user','$date')";      
                             $rslt = mysql_query($sql);
 
                      if ($rslt)
                      {
+                          ?>
+                            <script language="javascript">
+                                alert('Sucsessfuly Updated');
+                            window.location = "user.php";
+                            </script>
+                           <?php 
 
-
-                echo"sucsess";
-
+                
 
                      }  else {
-                         echo "sql doesnt run";    
+                       ?>
+                            <script language="javascript">
+                                alert('Error Occureed. Please Try again');
+                            </script>
+                           <?php    
                      }
 
                      }
