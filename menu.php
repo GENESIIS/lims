@@ -1,6 +1,6 @@
 <header class="templatemo-site-header">
           <div class="square"></div>
-          <h1>Hi <?php   echo $admin   ?></h1>
+          <h1>Hi <?php   echo $_SESSION['username']   ?></h1>
          
         </header>
       
@@ -16,7 +16,8 @@
           </div>
         <nav class="templatemo-left-nav">
           <ul>
-            <li><a href="user.php"><i class="fa fa-users fa-fw"></i>Manage Users</a></li>
+            <li><a href="user_admin.php"><i class="fa fa-users fa-fw"></i>Manage Users</a></li>
+            <li><a href="registration.php"><i class="fa fa-users fa-fw"></i>Registration</a></li>
             <li><a href="pending.php"><i class="fa fa-clock-o fa-fw"></i>Pending Authorization</a></li>
             <li><a href="search.php"><i class="fa fa-database fa-fw"></i>Search Member</a></li>
 			 <li><a href="report.php"><i class="fa fa-file fa-fw"></i>Report</a></li>
