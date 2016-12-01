@@ -1,4 +1,5 @@
 <?php
+$er1 =$password = $username="";
 include 'log_code.php';
 
 
@@ -18,6 +19,7 @@ include 'log_code.php';
 	    <link href="css/font-awesome.min.css" rel="stylesheet">
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/templatemo-style.css" rel="stylesheet">
+            <link href="css/error.css" rel="stylesheet">
 	    
 	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,27 +37,45 @@ include 'log_code.php';
 	        <form  class="templatemo-login-form" name="loging" method="post">
                     
                     <div class="form-group">
-                        <?php echo $er1  ?>
+                        <div class="error"><span></span><?php echo $er1  ?></div>
+                        
                     </div>
 	        	<div class="form-group">
                             
                             
 	        		<div class="input-group">
 		        		<div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>	        		
-		              	<input type="text" class="form-control" placeholder="User Name" name="txtuname">  <?php echo $ernm  ?>         
+                                        <input type="text" class="form-control" placeholder="User Name" name="txtuname" value="<?php 
+                        if (($username=="") && (isset($_COOKIE['username']))) {
+                                                    echo $_COOKIE['username'];
+                        }elseif ($username!="") {
+                            echo $username;
+                        }
+                                        
+                                        
+                                        
+                                        ?>"> <div class="notice"><span></span><?php echo $ernm  ?></div>            
 		          	</div>	
 	        	</div>
 	        	<div class="form-group">
 	        		<div class="input-group">
 		        		<div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>	        		
-		              	<input type="password" class="form-control" placeholder="Password" name="txtpw">   <?php echo $erpw  ?>        
+		              	<input type="password" class="form-control" placeholder="Password" name="txtpw" value="<?php 
+                                  if (($password=="") && (isset($_COOKIE['password']))) {
+                                                    echo $_COOKIE['password'];
+                        }elseif ($password!="") {
+                            echo $password;
+                        }
+                                
+                                
+                                ?>"> <div class="notice"><span></span><?php echo $erpw  ?></div>          
 		          	</div>	
 	        	</div>	 
 
 									
 	          	<div class="form-group">
 				    <div class="checkbox squaredTwo">
-				        <input type="checkbox" id="c1" name="cc" />
+                                        <input type="checkbox" id="c1" name="remember_me"  value="1"/>
 						<label for="c1"><span></span>Remember me</label>
 				    </div>				    
 				</div>
