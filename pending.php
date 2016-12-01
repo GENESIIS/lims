@@ -5,7 +5,7 @@ $admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
-if (($admin!="") || ($user!="")) {
+if (($user!="")) {
     
     $pendingf = mysql_query("select count(f_id) as total from foot where confirm=''");
     $row1 = mysql_fetch_assoc($pendingf);
@@ -55,9 +55,13 @@ if (($admin!="") || ($user!="")) {
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <?php  
-
-include 'menu.php';
-
+ if ($admin=="super") {
+            include 'smenue.php';
+        }elseif ($admin=="admin") {
+            include 'menu.php';
+            }  else {
+              include 'menuuser.php';  
+            }
 
 		?>
       </div>
