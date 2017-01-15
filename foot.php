@@ -42,8 +42,13 @@ if (($admin!="") || ($user!="")) {
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <?php  
-
-include 'menu.php';
+if ($admin=="super") {
+            include 'smenue.php';
+        }elseif ($admin=="admin") {
+            include 'menu.php';
+            }  else {
+              include 'menuuser.php';  
+            }
 
 
 		?>
