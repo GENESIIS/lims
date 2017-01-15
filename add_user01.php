@@ -5,11 +5,11 @@ if(!isset($_SESSION))
     } 
 
 include ('connection.php');
-$admin = $_SESSION['level'];
+ $admin = $_SESSION['level'];
 
 $erlvl=$ernm= $uname="";
 
-if ($admin=="admin") {
+if (($admin=="admin")||($admin=="super")) {
     include 'adusercode.php';
 
 ?>
@@ -50,7 +50,13 @@ if ($admin=="admin") {
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <?php  
-include 'menu.php';
+ if ($admin=="super") {
+            include 'smenue.php';
+        }elseif ($admin=="admin") {
+            include 'menu.php';
+            }  else {
+              include 'menuuser.php';  
+            }
 
 
 		?>
@@ -61,7 +67,19 @@ include 'menu.php';
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                  <li><a href="user.php">User</a></li>
+                  <?php  
+          if ($admin=="super") {
+              ?>
+         <li><a href="user.php">User</a></li>
+        <?php          
+          }  else {
+          ?>
+         <li><a href="user_admin.php">User</a></li>
+              <?php    
+          }
+                  ?>
+                  
+                  
                 <li><a href="add_user01.php"class="active" >Add User</a></li>
                 <!--li><a href="">Dashboard</a></li>
                 <li><a href="">Overview</a></li>
