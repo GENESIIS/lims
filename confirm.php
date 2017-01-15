@@ -3,7 +3,7 @@ session_start();
 include ('connection.php');
 $admin = $_SESSION['level'];
 $user = $_SESSION['username'];
-
+$limb = $ortho= "";
 
 if (($admin!="") || ($user!="")) {
     $mtable = $_SESSION['regtbl'];
@@ -40,8 +40,14 @@ if (($admin!="") || ($user!="")) {
         $spons = $_POST['spons'];
         $spamnt = $_POST['sponsamnt'];
         $obs = $_POST['obs'];
-        $limb = $_POST['limb'];
-        $ortho = $_POST['ortho'];
+        
+        if (isset($_POST['limb'])) {
+            $limb = $_POST['limb'];
+        }
+        if (isset($_POST['ortho'])) {
+            $ortho = $_POST['ortho'];
+        }
+        
         
         if (($tbl=="foot") && ($limb=="")) {
             $type = $limb;
