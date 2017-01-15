@@ -37,7 +37,7 @@ include 'log_code.php';
 	        <form  class="templatemo-login-form" name="loging" method="post">
                     
                     <div class="form-group">
-                        <div class="error"><span></span><?php echo $er1  ?></div>
+                        <div class="error"><span></span><?php echo $erpw.$ernm  ?></div>
                         
                     </div>
 	        	<div class="form-group">
