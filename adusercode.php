@@ -6,11 +6,11 @@ if(!isset($_SESSION))
 
 include ('connection.php');
 $user = $_SESSION['username'];
-$lvl = $_SESSION['level'];
+ $lvl = $_SESSION['level'];
 
 $pwer= $repwer =$erlnm =$erfnm=$fname=$lname=$erunm=$erpw= $level= $password ="";
 
-if ($lvl=="admin") {
+if (($lvl=="admin")||($lvl=="super")) {
     $date = date('Y.m.d');
                     if(isset($_POST['register']))    
                 {
@@ -48,7 +48,7 @@ if ($lvl=="admin") {
                       if ($count>=1)
 
                       {
-                          $erfnm= "User Name Already Exists";
+                          $erunm= "User Name Already Exists";
                       }else{
 
                      $sql = "INSERT INTO `user`(`user_fname`, `user_lname`, `username`, `userlevel`, `pw`, `crtby`, `crton`) 
@@ -60,7 +60,7 @@ if ($lvl=="admin") {
                           ?>
                             <script language="javascript">
                                 alert('Sucsessfuly Updated');
-                            window.location = "user.php";
+                                window.history.back();
                             </script>
                            <?php 
 
@@ -70,6 +70,7 @@ if ($lvl=="admin") {
                        ?>
                             <script language="javascript">
                                 alert('Error Occureed. Please Try again');
+                                window.history.back();
                             </script>
                            <?php    
                      }
