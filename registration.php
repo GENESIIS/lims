@@ -243,14 +243,10 @@ jQuery(function() {
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
                 </div>
                         <script>
-//                            function checkLength(el) {
-//                                    if (el.value.length != 10) {
-//                                      alert("length must be exactly 10 characters")
-//                                    }
-//                                  }
+
                             function myFunction1() {
                         var y = document.getElementById("nc").value;
-                        if((y.length!=10) || (isNaN(y))){
+                        if((y.length!=10)){
                             alert('Please enter a valied NIC Number');
                         }
                     }
@@ -672,5 +668,13 @@ jQuery(function() {
 
 ?>
 
+    
+    
+
+    
+    
+    
+    
+    
     
     
