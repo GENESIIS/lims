@@ -8,7 +8,7 @@ $admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
 
-if (($admin=="admin")) {
+if (($user!="")) {
     
      $date =$district =$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
        $birthyr = $age =  $gender =  $number =$edu = $fmemb =  $emp = $pemp =$adate = "";
@@ -69,15 +69,33 @@ $rows = mysql_fetch_array($rslt);
                       $ftcause = $_POST['footcause'];
                       $leg = $_POST['leg'];
                       $knee = $_POST['knee'];
-                      
-             $acause = $_POST['armcause'];
-             $arm = $_POST['arm'];
-             $elbow = $_POST['elbow'];
-          
-        $ocause = $_POST['othercause'];
-        $other = $_POST['other'];
-             $oarm = $_POST['otherarm'];
-             $oleg = $_POST['otherleg'];
+                    
+                      if (isset($_POST['armcause'])) {
+                           $acause = $_POST['armcause'];
+                      }
+                      if (isset($_POST['arm'])) {
+                          $arm = $_POST['arm'];
+                      }
+                      if (isset($_POST['elbow'])) {
+                          $elbow = $_POST['elbow'];
+                      }
+            
+             if (isset($_POST['othercause'])) {
+                         $ocause = $_POST['othercause'];
+                      }
+             if (isset($_POST['other'])) {
+                         $other = $_POST['other'];
+                      }
+             if (isset($_POST['otherarm'])) {
+                         $oarm = $_POST['otherarm'];
+                      }
+             if (isset($_POST['otherleg'])) {
+                         $oleg = $_POST['otherleg'];
+                      }
+        
+        
+             
+             
      
               if ($district == "") 
     { echo $erdis = "please select distric ";}
@@ -258,22 +276,14 @@ jQuery(function() {
      <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <?php  
+if ($admin=="super") {
+            include 'smenue.php';
+        }elseif ($admin=="admin") {
+            include 'menu.php';
+            }  else {
+              include 'menuuser.php';  
+            }
 
-if($admin!="" )
-	
-	{include 'menu.php';}
-	
-	elseif ($user != "" )
-	{include 'menuuser.php';}  else {
-    ?>
-<script language ="javascript">
-    window.location = "login.php";
-    </script>
-
-<?php
-}
-
-?>
 
 
 		?>
@@ -435,7 +445,7 @@ $code = "J.F /";
                                                                  if ($rows['sex']=="Male") {
                                                                      $selm = "selected";
                                                                  }  else {
-                                                                 $self = "checked";    
+                                                                 $self = "selected";    
                                                                  }
                             ?>
 <!--					 <option value="" disabled selected>Select Gender </option>-->
