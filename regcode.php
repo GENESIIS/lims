@@ -198,7 +198,7 @@ if (isset($_POST['save']))
 '$dob' , '$gender' , '$number' , '$edu' , '$fmemb' , '$emp' , '$pemp'  , 
                  '$adate' , '$doc' , '$hos' ,'$anyother','$aftramp','$voc',
                      '$ftcause' , '$leg','$knee','$cdate','$user')";
-                      $rslt = mysql_query($table);
+                      $rslt = mysql_query($sql);
                       result($table);  
             }
             
@@ -221,6 +221,7 @@ if (isset($_POST['save']))
 VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
     '$address','$nic','$national','$religion', '$dob' , '$gender' , '$number' , '$edu' , '$fmemb' , '$emp' , '$pemp'  , 
                  '$adate' , '$doc' , '$hos' ,'$anyother','$aftramp','$voc', '$acause' , '$arm','$elbow','$cdate','$user')";
+                $rslt = mysql_query($sql);
                                           result($table);  
         }
 
@@ -243,6 +244,7 @@ VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
              VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname', '$address', 
                  '$nic','$national','$religion', '$dob' , '$gender' , '$number' , '$edu' , '$fmemb' , '$emp' , '$pemp'  , 
                  '$adate' , '$doc' ,'$hos','$anyother','$aftramp','$voc', '$ocause' , '$other','$oleg','$oarm','$cdate','$user')";
+                                    $rslt = mysql_query($sql);
                                 result($table);
                                 }  
                                 
