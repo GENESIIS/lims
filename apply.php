@@ -152,7 +152,8 @@ $mdetail = "aouk";
         $tbl = "other";
         $name = "Other Appliance";
         $code = "O.A /";
-        $row= "oa_id";
+        //$row= "oa_id";
+        $col= "oa_id";
         $detail = "whicharmo";
         $mdetail = "whichlego";
     }	
@@ -218,7 +219,7 @@ $mdetail = "aouk";
 					<tr>
                   
                       <td>Date of Amputation</td>
-                      <td> <?php echo $rows['surgerydate'] ?></td>                    
+                      <td> <?php if($rows['surgerydate']!="0000-00-00"){echo $rows['surgerydate'];} ?></td>                    
                     </tr>
 					
 					<tr>
