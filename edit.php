@@ -637,6 +637,7 @@ $code = "J.F /";
 
                                                                 <div class="col-lg-6 col-md-6 form-group"> 
                                                                         <?php
+                                                                        $bel=$ael=$barm=$rarm=$larm="";
                                                                                 if ($rows['whicharm'] == "Left Arm") {
                                                                                     $larm = "checked";
                                                                                 } elseif ($rows['whicharm'] == "Right Arm") {
@@ -721,6 +722,7 @@ $code = "J.F /";
                                                                 <div class="col-lg-6 col-md-6 form-group"> 
 
                                                                     <?php
+                                                                    $lo =$ro=$bo=$llego=$rlego=$blego="";
                                                                                 if ($rows['whicharmo'] == "Left Arm") {
                                                                                     $lo = "checked";
                                                                                 } elseif ($rows['whicharmo'] == "Right Arm") {
