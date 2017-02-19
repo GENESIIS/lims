@@ -109,28 +109,6 @@ CREATE TABLE IF NOT EXISTS `foot_vw` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `limb`
---
-
-DROP TABLE IF EXISTS `limb`;
-CREATE TABLE IF NOT EXISTS `limb` (
-  `lid` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `amputepay` varchar(15) NOT NULL,
-  `sponspaid` varchar(15) NOT NULL,
-  `observation` varchar(150) NOT NULL,
-  `recomand` varchar(200) NOT NULL,
-  `confirm` varchar(150) NOT NULL,
-  `condate` date NOT NULL,
-  `crton` date NOT NULL,
-  `crtby` char(20) NOT NULL,
-  `modon` date NOT NULL,
-  `modby` char(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `memberarm`
 --
 
