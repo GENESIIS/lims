@@ -103,15 +103,20 @@ if (isset($_POST['save']))
 //                      
 //                             
 //             }
-             
-
-//  if (($nic!="")&& (strlen($nic)<10)) {
-//                 ?>
-<!--<script>
-    alert("Please Insert A Valied NIC Number ");
-</script>-->
-
-<?php
+             $rw = "0";
+        if ($nic!="") {
+             $getsql = mysql_query("SELECT nic FROM memberfoot WHERE nic = '$nic' UNION (SELECT nic FROM memberarm WHERE nic = '$nic') UNION (SELECT nic FROM memberother WHERE nic = '$nic' )");
+      if ($getsql) {
+           $rw = mysql_num_rows($getsql);
+      }  else {
+      $rw = "0";    
+      }
+        }
+     
+     
+   
+        
+  
 //                            header("location:javascript://history.go(-1)");
 //                             
 //             }
@@ -168,11 +173,17 @@ if (isset($_POST['save']))
     { $ernum = "please enter correct NIC number ";
      ?>
 <script>
-    alert("please Enter  NIC number");
+    alert("please enter correct NIC number");
 </script>
 
 <?php
-    }elseif(($ftcause!=0) && ($acause!=0)){
+    }elseif ($rw>=1) {
+                  ?>
+<script>
+    alert("NIC already exists");
+</script>
+<?php 
+      }elseif(($ftcause!=0) && ($acause!=0)){
         ?>
 <script>
     alert("Please select Only One Cause");
@@ -184,6 +195,7 @@ if (isset($_POST['save']))
     } elseif ($ftcause!="") {
                 
                       $leg = isset($_POST['leg']);
+                     
                       $knee = isset($_POST['knee']);
                 $table = "memberfoot";
         if ($leg=="") {
@@ -231,10 +243,11 @@ VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
      
             $other = $_POST['other'];
              $oarm = $_POST['otherarm'];
-             $oleg = $_POST['otherleg']; 
+             if(isset($_POST['otherleg'])){$oleg = $_POST['otherleg'];}
+              
                     $table = "memberother";
                                 if (($oarm=="") || ($oleg == "")) {
-                                    $erother = "Please Select Arm Or Leg";
+                                    $erother = "Please Select Arm and Leg";
                                 }  else {
                                     $sql = "INSERT INTO $table ( `month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` ,
                                     `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`, `prioremp`, `presntemp`, `surgerydate`, 
