@@ -76,10 +76,10 @@ if ($admin=="super") {
               <table class="table table-striped table-bordered templatemo-user-table">
                 <thead>
                   <tr>
-                    <td><a href="" class="white-text templatemo-sort-by">Reg Num<span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">Admission Number <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">Applied on <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">Requested By<span class="caret"></span></a></td>
+                    <td><a href="" class="white-text">Reg Num</a></td>
+                    <td><a href="" class="white-text ">Admission Number </a></td>
+                    <td><a href="" class="white-text ">Applied on</a></td>
+                    <td><a href="" class="white-text">Requested By</a></td>
                     <td>View</td>
                     
                   </tr>
