@@ -1,0 +1,60 @@
+/* 
+    Document   : error
+    Created on : Nov 10, 2016, 9:49:49 AM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.alert-box {
+    color:#555;
+    border-radius:10px;
+    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+    padding:10px 10px 10px 36px;
+    margin:10px;
+}
+
+
+.alert-box span {
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.error {
+  background:#ffecec;
+	border:1px #f5aca6;
+        color: red;
+            font-family:Tahoma,Geneva,Arial,sans-serif;font-size:12px;
+        border-radius:10px;
+        
+    
+}
+.success {
+    background:#e9ffd9 url('images/success.png') no-repeat 10px 50%;
+    border:1px solid #a6ca8a;
+    border:1px  #8ed9f6;
+     border-radius:10px;
+     font-family:Tahoma,Geneva,Arial,sans-serif;font-size:12px;
+}
+.warning {
+    background:#fff8c4;
+    border:1px  #f2c779;
+    border:1px  #8ed9f6;
+     border-radius:10px;
+     font-family:Tahoma,Geneva,Arial,sans-serif;font-size:12px;
+}
+.notice {
+    background:#e3f7fc;
+    border:1px  #8ed9f6;
+     border-radius:10px;
+     font-family:Tahoma,Geneva,Arial,sans-serif;font-size:12px;
+}
+
+
+
+
+
