@@ -204,7 +204,7 @@ jQuery(function() {
                                 <option value="Rev.">Rev..</option> 				
                   </select>  
                     
-                    <label for="inputFirstName"> <div class="error"><span></span><?php echo $ertil  ?></div><?php //echo $ertil  ?> </label>
+                    <label for="inputFirstName"> <div class="error"><span></span><?php echo $ertil  ?></div> </label>
                 </div>
                               
                                
@@ -299,13 +299,14 @@ jQuery(function() {
                     <option value="Female">Female</option>  
 									
                   </select>     
-                    
-                     <label for="inputFirstName"> <?php echo $ergen  ?> </label>
+                    <div class="error"><span></span><?php echo $ergen  ?></div>
+<!--                     <label for="inputFirstName"> <?php //echo $ergen  ?> </label>-->
                 </div> 
 				<div class="col-lg-4 col-md-4 form-group required">                  
                     <label for="inputLastName" class="control-label">Phone Number </label>
                     <input type="tel" class="form-control" id="tel" required=""  onblur="myFunction()" placeholder="Phone Number" name = "number" value="<?php echo $number ?>" maxlength="10">    
-                    <label for="inputFirstName"> <?php echo $ernum ?> </label>
+                    <div class="error"><span></span><?php echo $ernum  ?></div>
+<!--                    <label for="inputFirstName"> <?php echo $ernum ?> </label>-->
                 </div>
               </div>
 		
@@ -459,7 +460,7 @@ jQuery(function() {
                                                                       <label for="r4" class="font-weight-400"><span></span>Both Legs</label>
                                                                     </div>
                                                                                <div class="margin-right-15 templatemo-inline-block">
-                                                                      <?php echo $erleg ?>
+                                                                     <div class="error"><span></span><?php echo $erleg ?></div> 
                                                                     </div>                 
                                                                                          </div>
 
@@ -473,8 +474,8 @@ jQuery(function() {
                                                                       <input type="radio" name="knee"  value="Below Knee" id="r6" <?php //echo $under ?> >
                                                                       <label for="r6" class="font-weight-400"><span></span>Below Knee</label>
                                                                     </div>
-
-                                                                         </div>	<?php echo $erknee ?>
+                                                                                            <div class="error"><span></span><?php echo $erknee ?></div> 
+                                                                         </div> 	
 
 
                                                               </div>
@@ -521,8 +522,9 @@ jQuery(function() {
                                                                       <input type="radio" name="arm"  value="Both"  id="r9" <?php //echo $both ?>>
                                                                       <label for="r9" class="font-weight-400"><span></span>Both Arms</label>
                                                                     </div>
-
-                                                                                         </div><?php echo $erarm   ?>
+                                                                                     <div class="error"><span></span><?php echo $erarm   ?></div>
+                                                                                         </div>
+                                                                                            
 
                                                                                         <div class="col-lg-6 col-md-6 form-group"> 
 
@@ -534,7 +536,7 @@ jQuery(function() {
                                                                       <input type="radio" name="elbow"  value="Below Elbow" id="r11" <?php //echo $under ?> >
                                                                       <label for="r11" class="font-weight-400"><span></span>Below Elbow</label>
                                                                     </div>
-
+                                                                                            <div class="error"><span></span><?php echo $erarm   ?></div>
                                                                          </div>	
 
 
@@ -562,7 +564,7 @@ jQuery(function() {
                 <option value="Rev.">Rev..</option> 				-->
                                   </select>  
 
-                                    <label for="inputFirstName"> <?php echo $ertil  ?> </label>
+                                    <label for="inputFirstName"><div class="error"><span></span><?php echo $ertil  ?></div>  </label>
                                 </div> 
                                                           <div class="col-lg-6 col-md-6 form-group">                  
                     <label for="inputLastName">Other Details </label>
