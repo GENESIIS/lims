@@ -1,6 +1,6 @@
 <header class="templatemo-site-header">
           <div class="square"></div>
-          <h1>Hi <?php   echo $user   ?></h1>
+          <h1>Hi <?php   echo $_SESSION['username']   ?></h1>
           
         </header>
         

@@ -18,9 +18,9 @@ if(isset($_POST['btnlog']))
     $md5pw = md5($password);
     
      if($username == ""){
-                    $ernm = "Please Enter user name";
+                    $ernm = "Please Enter User Name";
                 } elseif($password == ""){
-                   $erpw = "Please Enter Pasword";
+                   $erpw = "Please Enter Password";
                 }
                 
               $logsql ="SELECT * FROM user where username = '$username' and pw = '$md5pw' " ;  
@@ -80,7 +80,7 @@ if(isset($_POST['btnlog']))
                               }
                               
                                else {
-                                                    $er1 =  "Please Enter correct User Name or Password";    
+                                                    $er1 =  "Invalid User Name and Password";    
                                                 }
                                                 
                                                 

@@ -12,7 +12,7 @@ include("connection.php");
 
 //Select the Products you want to show in your PDF file
 //select regnum, fname, lname from memberfoot where regnum = '1'
-$result=mysql_query("select regnum, fname, lname from memberfoot where regnum = '1'");
+$result=mysql_query("SELECT * FROM `memberfoot` WHERE `regnum`='10' ");
 $number_of_products = mysql_numrows($result);
 
 //Initialize the 3 columns and the total

@@ -7,7 +7,7 @@ $user = $_SESSION['username'];
 
 if (($user!="")) {
     $date = date("Y.m.d");
-    include 'alreadymemcode.php';
+    include 'regcode.php';
 
     
 ?>
@@ -18,7 +18,8 @@ if (($user!="")) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jaipur Foot workshop Registration form</title>
+    <title> 
+        Jaipur Foot workshop Registration form</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
   
@@ -48,7 +49,7 @@ if (($user!="")) {
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<link href="css/error.css" rel="stylesheet">
+ <link href="css/error.css" rel="stylesheet">
 
 <script>
 
@@ -102,11 +103,7 @@ jQuery(function() {
     
 });
 jQuery(function() {
-    jQuery( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true});
-    
-});
-jQuery(function() {
-    jQuery( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true, yearRange : '-90:yy+1'});
+    jQuery( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true, yearRange : '-90:yy+1'});
     
 });
 
@@ -122,19 +119,22 @@ jQuery(function() {
 }
     </style>
 
+
   </head>
   <body>
     <!-- Left column -->
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
-        <?php  
- if ($admin=="super") {
+        <?php
+        if ($admin=="super") {
             include 'smenue.php';
         }elseif ($admin=="admin") {
             include 'menu.php';
             }  else {
               include 'menuuser.php';  
             }
+
+
 
 		?>
       </div>
@@ -146,8 +146,8 @@ jQuery(function() {
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="registration.php" >New Registration</a></li>
-				<li><a href="alreadymem.php" class="active">Old Registration</a></li>
+                <li><a href="registration.php" class="active">New Registration</a></li>
+				<li><a href="alreadymem.php" >Old Registration</a></li>
 <!--                <li><a href="">Dashboard</a></li>
                 <li><a href="">Overview</a></li>
                 <li><a href="login.html">Sign in form</a></li>-->
@@ -157,29 +157,27 @@ jQuery(function() {
         </div>
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget white-bg">
-            <h2 class="margin-bottom-10" align="center">Jaipur Foot workshop Registration form</h2>
-            <p>
-                
-            </p><br>
+            <h2 class="margin-bottom-10" align="center">Friend-In-Need Society,<br>
+        Colombo. <br>
+                Jaipur Foot workshop Registration form</h2>
+            <p></p><br>
              <form  class="templatemo-login-form" method="post" enctype="multipart/form-data">
                 <div id="reg">
-                    <div class="error"><span></span><?php echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?></div>
                   <div class="row form-group">
-                      <div class="col-lg-4 col-md-4 form-group required">                  
-                          <label for="inputLastName" class="control-label">Reg Num </label>
-                        <input type="text" class="form-control" placeholder="Example ; 01/01/2016" name = "rnumber"  value="<?php echo $regnumber ?>">                  
+                    <div class="col-lg-6 col-md-6 form-group">                  
+                        <label for="inputLastName">Date </label>
+                        <input type="text" class="form-control"  disabled="" placeholder="<?php echo date("Y.m.d") ?>" name = "date"  >                  
                     </div> 
-                    <div class="col-lg-4 col-md-4 form-group required">                  
-                        <label for="inputLastName" class="control-label">Date </label>
-                        <input type="date" class="form-control" id="datepicker2" value=" <?php echo date("Y.m.d") ?>" placeholder="<?php echo date("Y.m.d") ?>" name = "date"  >                  
-                    </div> 
-                        <div class="col-lg-4 col-md-4 form-group required">                  
+                      
+                        <div class="col-lg-6 col-md-6 form-group required">                  
                             <label for="inputLastName" class="control-label">District </label>
-                            <select class="form-control" name = "district" required="">
-                                     
+                         <select class="form-control" name = "district" required="Please select the District">
+<!--                                     <option value="" disabled selected>--Select-- </option>-->
                                      <option value="<?php  echo $district ?>"><?php  echo $district ?></option>
+                                     
                                            <?php 
                                         $sql = mysql_query("SELECT * FROM  district ORDER BY district ASC");
+                                        
                                         while ($row = mysql_fetch_array($sql)){
                                         echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
                                         }
@@ -193,15 +191,15 @@ jQuery(function() {
                     
               <div class="row form-group">
 			  <div class="col-lg-12  form-group">
-               <div class="col-lg-2 col-md-2 form-group required">                  
+                <div class="col-lg-2 col-md-2 form-group required">                  
                     <label for="inputUsername" class="control-label">Title</label>
-                     <select class="form-control" name = "title" value="<?php echo $title   ?>">
+                    <select class="form-control" name = "title" required="">
                          <option value="<?php echo $title ?>"selected><?php echo $title ?></option>
                     <option value="Mr">Mr.</option>
                     <option value="Mrs">Mrs.</option>  
 					<option value="Miss">Miss.</option>  
 				<option value="Master">Master.</option> 
-<option value="Rev.">Rev..</option> 				
+                                <option value="Rev.">Rev..</option> 				
                   </select>  
                     
                     <label for="inputFirstName"> <?php echo $ertil  ?> </label>
@@ -225,7 +223,7 @@ jQuery(function() {
 				</div>
               </div>
 			  
-			   <div class="row form-group required">
+			    <div class="row form-group required">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Address</label>
                     <textarea class="form-control" id="inputNote" rows="3" name = "address" placeholder="Address..." required=""><?php echo $address   ?></textarea>
@@ -238,7 +236,7 @@ jQuery(function() {
                      <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputFirstName">ID Number </label>
-                    <input  onblur="myFunction1()" type="text" class="form-control" id="nc" name ="nicold" value="<?php echo $nic   ?>" maxlength="10">  
+                    <input  onblur="myFunction1()" type="text" class="form-control" id="nc" name ="nic" value="<?php echo $nic   ?>" maxlength="10">  
                     
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
                 </div>
@@ -416,15 +414,15 @@ jQuery(function() {
 			 </div>	
                           </div>
                     
-                </div><div class="error"><span></span><?php echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?></div>
-                 <?php// echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?>
+                </div>
+                 <?php echo $erleg ;echo $erknee ?>
                           <br><br><br><br>
                                       <div class="row form-group" id="foot" style="display: none">
                               
                                           <div class="col-lg-12  form-group">
                                 <div class="col-lg-6 col-md-6 form-group required">                  
                                     <label for="inputUsername" class="control-label">cause of amputation</label>
-                                     <select class="form-control" name = "footcause">
+                                     <select class="form-control" name = "footcause" value="<?php    ?>">
                                          <option value="0">--Select--</option>
                                     <option value="Road Accident">Road Accident</option>
                                     <option value="Train Accident">Train Accident</option>
@@ -446,7 +444,7 @@ jQuery(function() {
                                                 </div>
                               
                                                                               <div class="row form-group">
-                                                                        
+
                                                                 <div class="col-lg-6 col-md-6 form-group"> 
 
 
@@ -462,10 +460,8 @@ jQuery(function() {
                                                                       <input type="radio" name="leg"  value="Both"  id="r4" <?php //echo $both ?>>
                                                                       <label for="r4" class="font-weight-400"><span></span>Both Legs</label>
                                                                     </div>
-                                                                               <div class="margin-right-15 templatemo-inline-block">
-                                                                      <?php echo $erleg ?>
-                                                                    </div>                 
-                                                                                         </div>
+
+                                                                                         </div><?php echo $erleg ?>
 
                                                                                         <div class="col-lg-6 col-md-6 form-group"> 
 
@@ -493,7 +489,7 @@ jQuery(function() {
                                                       <div class="col-lg-12  form-group">
                                            <div class="col-lg-6 col-md-6 form-group required">                  
                                     <label for="inputUsername" class="control-label">cause of amputation</label>
-                                     <select class="form-control" name = "armcause">
+                                     <select class="form-control" name = "armcause" value="<?php  ?>">
                                          <option value="0">--Select--</option>
                                     <option value="Accident">Accident</option>
                                     <option value="From Birth">From Birth</option>  
@@ -557,7 +553,7 @@ jQuery(function() {
                                                       <div class="col-lg-12  form-group">
                                            <div class="col-lg-6 col-md-6 form-group required">                  
                                     <label for="inputUsername" class="control-label">cause of Disability</label>
-                                     <select class="form-control" name = "othercause" >
+                                     <select class="form-control" name = "othercause" value="<?php echo $title   ?>">
                                          <option value="0">--Select--</option>
                                     <option value="Accident">Accident</option>
                                     <option value="From Birth">From Birth</option>  
@@ -673,8 +669,12 @@ jQuery(function() {
 ?>
 
     
-    <script>
-        
+    
 
- 
-    </script>
+    
+    
+    
+    
+    
+    
+    

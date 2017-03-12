@@ -7,29 +7,38 @@ include ('connection.php');
 $admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 
-$nic=$ernum=$erno="";
+$nic=$ernum=$erno=$ernonic= $ernoid  = "";
 
 
   if (isset($_POST['searchid'])) {
    
       $nic = $_POST['nic'];
+      $type = $_POST['num'];
       
       if ($nic=="") {
+          $ernonic = "Please Enter The NIC Number";
                         ?>
                             <script language="javascript">
                                 alert('Please Enter The NIC Number');
                             </script>
                             <?php
-      }  else {
-          $sqlarm = mysql_query("select regnum,nic from memberarm where nic = '$nic'");
-      $sqlothr = mysql_query("select regnum,nic from memberother where nic = '$nic'");
+      }elseif (preg_match("/\s/", $nic)) {
+          $ernonic = "Please Enter correct NIC Number Without Any Spaces";
+                        ?>
+                            <script language="javascript">
+                                alert('Please Enter correct NIC Number Without Any Spaces');
+                            </script>
+                            <?php
+      }elseif ($type=="") { 
+      $ernum = "Please Select the Type";
+                        ?>
+                            <script language="javascript">
+                                alert('Please Select the Type');
+                            </script>
+                            <?php
+  }elseif($type=="Foot"){
       $sqlft = mysql_query("select regnum,nic from memberfoot where nic = '$nic'");
-      
-      
-      
-      
-      
-      if (mysql_num_rows($sqlft)>0) {
+        if (mysql_num_rows($sqlft)>0) {
          
           $row = mysql_fetch_array($sqlft);
           $x= $row['regnum'];
@@ -41,7 +50,16 @@ $nic=$ernum=$erno="";
                             </script>
                             <?php
            
-      }elseif (mysql_num_rows($sqlarm)>0) {
+      } else {
+    $ernonic  = "No ID/NIC Number Found";    
+    }
+  
+  
+  
+  }elseif($type=="Arm"){
+      
+      $sqlarm = mysql_query("select regnum,nic from memberarm where nic = '$nic'");
+      if (mysql_num_rows($sqlarm)>0) {
           echo "in 01";
         $row = mysql_fetch_array($sqlarm);
           $x= $row['regnum'];
@@ -52,7 +70,14 @@ $nic=$ernum=$erno="";
                                  window.location = "apply.php";
                             </script>
                             <?php
-    }elseif (mysql_num_rows($sqlothr)>0) {
+    }else {
+    $ernonic  = "No ID/NIC Number Found";    
+    }
+  
+  
+  }elseif($type=="Other"){
+      $sqlothr = mysql_query("select regnum,nic from memberother where nic = '$nic'");
+      if (mysql_num_rows($sqlothr)>0) {
         echo "in 01";
         $row = mysql_fetch_array($sqlothr);
           $x= $row['regnum'];
@@ -64,8 +89,13 @@ $nic=$ernum=$erno="";
                             </script>
                             <?php
     }  else {
-    $erno = "No ID Number Found";    
+    $ernonic  = "No ID/NIC Number Found";    
     }
+      
+
+  }else {
+           $ernonic  = "No ID/NIC Number Found"; 
+      
           
       }
       
@@ -78,9 +108,10 @@ $nic=$ernum=$erno="";
       $foot = $_POST['regfoot'];
       $arm = $_POST['regarm'];
       $other = $_POST['regother'];
-        
+        $sql = FALSE;
       
       if ( ($foot=="") && ($arm=="") &&($other=="")  ) {
+          $ernoid = "Please Enter The Reg Number";
         ?>
                             <script language="javascript">
                                 alert('Please Enter The Reg Number');
@@ -102,11 +133,13 @@ $nic=$ernum=$erno="";
           $sql = mysql_query("select regnum from memberother where regnum='$regnum'");
           $_SESSION['table']="memberother";
     }else {
+         $ernoid = "Incorrect Registration Number";
         ?>
                             <script language="javascript">
                                 alert('Reg Number Incorrect');
                             </script>
                             <?php
+                            
     }
     
     
@@ -132,9 +165,10 @@ $nic=$ernum=$erno="";
                           $_SESSION['id'];
                           
                           if ($x=="") {
+                              $ernoid = "Incorrect Registration Number";
                               ?>
                             <script language="javascript">
-                                alert('No Records Found');
+                                alert('Incorrect Registration Number');
                             </script>
                             <?php
                           }  else {
@@ -146,7 +180,8 @@ $nic=$ernum=$erno="";
                           }
                             
                                 }else {
-                                echo "Internal Error.";    
+                                    
+                                 
                                 }
 //                }      
 }  else {

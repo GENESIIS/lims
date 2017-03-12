@@ -286,7 +286,7 @@ $code = "J.F /";
                               
                               
                 <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputUsername">Admitted On Hostel</label>
+                    <label for="inputUsername">Admitted On</label>
                     <input type="text" class="form-control" id="datepicker" placeholder="Select" name = "admit" value="<?php   ?>">   
                     <label for="inputFirstName"> <?php    ?> </label>
                 </div>

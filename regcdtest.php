@@ -1,10 +1,12 @@
 <?php
-if(!isset($_SESSION)) 
+
+    if(!isset($_SESSION)) 
     { 
         session_start(); 
     } 
+
 include ('connection.php');
-$admin = $_SESSION['level'];
+//$admin = $_SESSION['adminname'];
 $user = $_SESSION['username'];
 
 
@@ -12,7 +14,10 @@ if (($user!="")) {
 
 $cdate = date("Y.m.d");
 
- $date =$district = $regnumber=$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
+$month = date('m');
+    $yr = date("Y");
+    
+ $district =$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
        $birthyr = $age =  $gender =  $number =$edu = $fmemb =  $emp = $pemp =$adate = "";
          
           
@@ -21,40 +26,34 @@ $cdate = date("Y.m.d");
        $erarm = $ocause= $other = $oarm= $oleg = "";
         
         
-     $erdis = $ertil = $erfnsme =$erad =$ersge =$ergen = $ernum = $erother= "";
-
-
-
+     $erdis = $ertil = $erfnsme =$erad =$ersge =$ergen = $ernum = "";
 
 
 if (isset($_POST['save']))
     
 {
    
-    //$month = date('m');
-   // $yr = date("Y");
+    $month = date('m');
+    $yr = date("Y");
     
-    
-    
-    
-    
-  $regnumber = $_POST['rnumber'];
-    $date = $_POST['date'];
+//    $rnumber = $_POST['rnumber'];
+    $date = date("Y.m.d");
     $district = $_POST['district'];
      $title = $_POST['title'];
      $fname = $_POST['fname'];
       $lname = $_POST['lname'];
        $address = $_POST['address'];
-       $nic = $_POST['nicold'];
+       $nic = $_POST['nic'];
        $national = $_POST['national'];
        if (isset($_POST['religion'])) {
             $religion = $_POST['religion'];
        }
+      
        $dob = $_POST['dob'];
 //       $age = $_POST['age'];
                     $byr = explode("-", $dob);
                    $birthyr = $byr[0];
-                   //$age = $yr - $birthyr;
+                   $age = $yr - $birthyr;
        
        
        
@@ -73,65 +72,76 @@ if (isset($_POST['save']))
           $aftramp = $_POST['afteramp'];
           $voc =$_POST['voc'];
           
-                 if ($_POST['footcause']!="0") {
+          
+          if ($_POST['footcause']!="") {
                        $ftcause = $_POST['footcause'];
                       
-}elseif ($_POST['armcause']!="0") {
+}elseif ($_POST['armcause']!="") {
              $acause = $_POST['armcause'];
              
-}elseif ($_POST['othercause']!="0") { 
+}elseif ($_POST['othercause']!="") { 
          $ocause = $_POST['othercause'];
-} 
-             
-             $reg = explode("/", $regnumber);
-             $rnumber= isset($reg[0])? $reg[0]:NULL;
-             $month = isset($reg[1])? $reg[1]:NULL;
-              $yr= isset($reg[2])? $reg[2]:NULL;
-          
-             
-           // echo $nic;
-        
-//  if (($nic!="")&& (strlen($nic)<10)) {
+}  else {
+    
+}
+
+       
+//         echo $length =  preg_match_all( "/[0-9]/", $nic );
+//         if ($length===FALSE) {
+//             echo "two";
+//         }
+//echo $nic;
+//             if ($nic!="") {
 //                 ?>
 <!--<script>
-    alert("Please Insert A Valied nic Number ");
+    alert("Please Insert A Valied NIC number ");
 </script>-->
 
 <?php
-//                           header("location:javascript://history.go(-1)");
+//                      header("location:javascript://history.go(-1)");
+//                      
+//                      
 //                             
 //             }
              
-               if (($number!="")&& (strlen($number)<10)) {
-                 ?>
-<script>
-    alert("Please Insert A Valied Phone Number ");
-</script>
+
+//  if (($nic!="")&& (strlen($nic)<10)) {
+//                 ?>
+<!--<script>
+    alert("Please Insert A Valied NIC Number ");
+</script>-->
 
 <?php
-                           header("location:javascript://history.go(-1)");
-                             
-             }
-            
-            
-      if ($rnumber == "") {
-            ?>
-            <script>
-                alert("Please enter The Registration Number");
-            </script>
+//                            header("location:javascript://history.go(-1)");
+//                             
+//             }
 
-            <?php
-    }elseif ($district == "") 
+
+//               if (($number!="")&& (strlen($number)!=10)) {
+//                 ?>
+<!--<script>
+    alert("Please Insert A Valied Phone Number ");
+</script>-->
+
+<?php
+//                            header("location:javascript://history.go(-1)");
+//                             
+//             }
+//             
+//             
+             
+
+     if ($district == "") 
     { $erdis = "please select distric ";}
     
     elseif ($title == "") 
-    { $ertil = "please select Title  ";}
+    { $ertil = "please select title  ";}
           
      elseif ($fname == "") 
-    { $erfnsme = "please enter Frist name ";}
+    { $erfnsme = "please enter frist name ";}
     
      elseif ($address == "") 
-    { $erad = "please enter Address ";}
+    { $erad = "please enter address ";}
     
     elseif ($dob == "") 
     { $ersge = "please Select Date Of Birth ";}
@@ -172,133 +182,97 @@ if (isset($_POST['save']))
 <?php
     
     
-    }elseif ($ftcause!="") {
-                
-                      $leg = isset($_POST['leg']);
-                      $knee = isset($_POST['knee']);
+    } else{
+        
+            if ($ftcause!="0") {
+                echo "foot";
+                      $leg = $_POST['leg'];
+                      $knee = $_POST['knee'];
                 $table = "memberfoot";
         if ($leg=="") {
-            $erleg = "Please Select Which Leg";
+            $erleg = "Please Select Leg";
         }elseif ($knee == "") {
-                $erknee = "Please Select Below or Under Knee";
-            }  else {
-                 $get= mysql_query("select * from $table where regnum='$rnumber'");
-                 if (mysql_num_rows($get)<1) {
-                     $sql = "INSERT INTO $table (`regnum`,`month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` , `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`,
+                $erknee = "Please select Knee";
+            }
+            
+            $sql = "INSERT INTO $table (`month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` , `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`,
                 `prioremp`, `presntemp`, `surgerydate`, `doctor`, `surgeonhospitle`,`anyother`, `afteramp`, `vocational`, `cause`, `whichleg`, `aouk`, `crton`, `crtby` )
-             VALUES ('$rnumber','$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname', '$address', 
+             VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname', '$address', 
 '$nic','$national','$religion',                 
 '$dob' , '$gender' , '$number' , '$edu' , '$fmemb' , '$emp' , '$pemp'  , 
                  '$adate' , '$doc' , '$hos' ,'$anyother','$aftramp','$voc',
                      '$ftcause' , '$leg','$knee','$cdate','$user')";
-                      $rslt = mysql_query($sql);
-                      result($table,$rnumber);  
-                 }  else {
-                       ?>
-                        <script>
-                            alert("Registration Number Already Exists");
-                        </script>
-
-                        <?php
-                 }
-               
-                 
-            }
-    }elseif ($acause!="") {
             
-            $arm = isset($_POST['arm']) ;
-             $elbow = isset($_POST['elbow']);
+        }elseif ($acause!=0) {
+            echo "arm";
+            $arm = $_POST['arm'];
+             $elbow = $_POST['elbow'];
             $table = "memberarm";
     if ($arm=="") {
-        $erarm = "Please Select Which Arm";
+        $erarm = "Please Select Arm";
     }elseif ($elbow == "") {
-            $erknee = "Please Select Above or Below Elbow";
-        }  else {
-            $get= mysql_query("select * from $table where regnum='$rnumber'");
-                 if (mysql_num_rows($get)<1) {
-                     $sql = "INSERT INTO $table ( `regnum`,`month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` ,
+            $erknee = "Please select Elbow";
+        }
+
+        $sql = "INSERT INTO $table ( `month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` ,
     `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`,
     `prioremp`, `presntemp`, `surgerydate`, `doctor`, `surgeonhospitle`, `anyother`, `afteramp`, `vocational`,
     `cause`, `whicharm`, `aobelbow`, `crton`, `crtby`)
-VALUES ('$rnumber','$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
+VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
     '$address','$nic','$national','$religion', '$dob' , '$gender' , '$number' , '$edu' , '$fmemb' , '$emp' , '$pemp'  , 
                  '$adate' , '$doc' , '$hos' ,'$anyother','$aftramp','$voc', '$acause' , '$arm','$elbow','$cdate','$user')";
-         $rslt = mysql_query($sql);
-                                          result($table,$rnumber); 
-                     
-                 }  else {
-                     ?>
-                        <script>
-                            alert("Registration Number Already Exists");
-                        </script>
-
-                        <?php
-                 }
-            
-          
-        }
-       }elseif ($ocause!="") {
-     
+                                                                                                
+                                                                                                
+ }elseif ($ocause!=0) {
+     echo "other";
             $other = $_POST['other'];
              $oarm = $_POST['otherarm'];
              $oleg = $_POST['otherleg']; 
                     $table = "memberother";
                                 if (($oarm=="") || ($oleg == "")) {
                                     $erother = "Please Select Arm Or Leg";
-                                }  else {
-                                    $get= mysql_query("select * from $table where regnum='$rnumber'");
-                 if (mysql_num_rows($get)<1) {
-                         $sql = "INSERT INTO $table ( `regnum`,`month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` ,
+                                }  
+                                $sql = "INSERT INTO $table ( `month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` ,
                                     `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`, `prioremp`, `presntemp`, `surgerydate`, 
                           `doctor`, `surgeonhospitle`,`anyother`, `afteramp`, `vocational`,
                           `cause`, `other`, `whichlego`, `whicharmo`,
                                     crton,crtby )
-             VALUES ('$rnumber','$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname', '$address', 
+             VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname', '$address', 
                  '$nic','$national','$religion', '$dob' , '$gender' , '$number' , '$edu' , '$fmemb' , '$emp' , '$pemp'  , 
                  '$adate' , '$doc' ,'$hos','$anyother','$aftramp','$voc', '$ocause' , '$other','$oleg','$oarm','$cdate','$user')";
-                                   $rslt = mysql_query($sql);
-                                result($table,$rnumber);
-                     
-                 }  else {
-                      ?>
-                        <script>
-                            alert("Registration Number Already Exists");
-                        </script>
-
-                        <?php
-                 }
-                                    
-                               
-                                }  
                                 
-       }   else {
-                      //if (($ftcause=="0")&& ($acause=="0") && $ocause=="0" )
+                                
+                     }  else {
+                         
                          ?>
 <script>
     alert("Please Select Limb Type");
-    
+    history.go(-1);
 </script>
 
 <?php
-                     }  
-          
-            
-                }
-    
+
+ //header("location:javascript://history.go(-1)");
  
-
-}  else {
-    ?>
-<script language ="javascript">
-    window.location = "logout.php";
-    </script>
-
-<?php
-}
-
-function result($table,$rnumber){
-               
-                  $get= mysql_query("select * from $table where regnum='$rnumber'");
+                     }
+        
+      
+      $rslt = mysql_query($sql);
+//      echo "in rslt00";
+//      
+//        if ($ftcause=="0") {echo "ft is empty";
+//            
+//        }elseif ($acause==0) {
+//                echo "arm is empty";
+//            } elseif ($ocause=="0") {
+//            echo "other is empty";
+//        }
+        
+      
+      die();
+                                                                if($rslt){
+                                                                     
+                                                                    $get= mysql_query("select * from $table order by regnum desc limit 1");
                                                                     $row = mysql_fetch_array($get);
                                                                         $nid = $row['regnum']." / ".$row['month']." / ".$row['year'];
                                                                         
@@ -320,7 +294,7 @@ function result($table,$rnumber){
                                                                 var myvar1 = document.getElementById("myText");
                                                                var myvar1 = document.getElementById("myText");
                                                                
-                                                                alert('Updated Reg Num  ' + myvar1.value);
+                                                                alert('Reg Num  ' + myvar1.value);
                                                                     windo.location = "search.php";
                                                             </script>
                                                             
@@ -329,7 +303,20 @@ function result($table,$rnumber){
                                                             </script>
                                                             
                                                                  <?php
-            }
 
+                            } else {
+                              echo "<script type='text/javascript'>alert('Error occured. Some fields are empty.')</script>";
+                            }
+                }
+    }
+
+}  else {
+    ?>
+<script language ="javascript">
+    window.location = "logout.php";
+    </script>
+
+<?php
+}
 ?>
     

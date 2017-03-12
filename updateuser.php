@@ -1,10 +1,10 @@
 <?php
-session_start();
-include ('connection.php');
-$user = $_SESSION['adminname'];
 
-if ($user!="") {
-        $date = date(Y.m.j);
+include ('connection.php');
+$user = $_SESSION['username'];
+
+
+        $date = date('Y.m.d');
                     
 
                     $uname = $_POST['username'];
@@ -22,9 +22,21 @@ if ($user!="") {
 
                                                              if ($rslt)
                                                              {
-                                                        echo"sucsess";
+                                                         ?>
+                                                        <script language ="javascript">
+                                                            alert('Successfuly Updated');
+                                                            window.location = "user_admin.php";
+                                                            </script>
+
+                                                        <?php
                                                              }  else {
-                                                                 echo "sql doesnt run";    
+                                                                  ?>
+                                                        <script language ="javascript">
+                                                            alert('Error occured. Please re enter the details');
+                                                            window.location = "user_admin.php";
+                                                            </script>
+
+                                                        <?php  
                                                              }
                                                              
                                                              $unm = $uname;
@@ -40,9 +52,22 @@ if ($user!="") {
 
                                                                  if ($rslt)
                                                                  {
-                                                            echo"sucsessfully updated with the pw";
+                                                                     ?>
+                                                        <script language ="javascript">
+                                                            alert('Successfuly Updated with the Password');
+                                                            window.location = "user.php";
+                                                            </script>
+
+                                                        <?php
+                                                            
                                                                  }  else {
-                                                                     echo "sql doesnt run";    
+                                                                      ?>
+                                                        <script language ="javascript">
+                                                            alert('Error occured. Please re enter the details');
+                                                            window.location = "user.php";
+                                                            </script>
+
+                                                        <?php   
                                                                  }
                                                                  $unm = $uname;
                                                              $lvl = $level;
@@ -52,13 +77,5 @@ if ($user!="") {
     
                
 
-}  else {
-    ?>
-<script language ="javascript">
-    window.location = "login.php";
-    </script>
-
-<?php
-}
 
 ?>

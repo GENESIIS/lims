@@ -75,12 +75,40 @@ if (isset($_POST['save']))
           
           if ($_POST['footcause']!="0") {
                        $ftcause = $_POST['footcause'];
-                      
+                        $rw = "0";
+        if ($nic!="") {
+             $getsql = mysql_query("SELECT nic FROM memberfoot WHERE nic = '$nic'");
+      if ($getsql) {
+           $rw = mysql_num_rows($getsql);
+      }  else {
+      $rw = "0";    
+      }
+        }
+                       
 }elseif ($_POST['armcause']!="0") {
              $acause = $_POST['armcause'];
              
+         $rw = "0";
+        if ($nic!="") {
+             $getsql = mysql_query("SELECT nic FROM  memberarm WHERE nic = '$nic'");
+      if ($getsql) {
+           $rw = mysql_num_rows($getsql);
+      }  else {
+      $rw = "0";    
+      }
+        }
+             
 }elseif ($_POST['othercause']!="0") { 
          $ocause = $_POST['othercause'];
+         $rw = "0";
+        if ($nic!="") {
+             $getsql = mysql_query("SELECT nic memberother WHERE nic = '$nic'");
+      if ($getsql) {
+           $rw = mysql_num_rows($getsql);
+      }  else {
+      $rw = "0";    
+      }
+        }
 }  else {
     
 }
@@ -103,15 +131,7 @@ if (isset($_POST['save']))
 //                      
 //                             
 //             }
-             $rw = "0";
-        if ($nic!="") {
-             $getsql = mysql_query("SELECT nic FROM memberfoot WHERE nic = '$nic' UNION (SELECT nic FROM memberarm WHERE nic = '$nic') UNION (SELECT nic FROM memberother WHERE nic = '$nic' )");
-      if ($getsql) {
-           $rw = mysql_num_rows($getsql);
-      }  else {
-      $rw = "0";    
-      }
-        }
+             
      
      
    

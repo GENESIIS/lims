@@ -336,8 +336,8 @@ $mdetail = "aouk";
                               
                               
                 <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputUsername">Admitted On Hostel</label>
-                    <input type="text" class="form-control" id="datepicker" placeholder="Select" name = "admit" value="<?php echo $rows['admiton'] ?>">   
+                    <label for="inputUsername">Admitted On</label>
+                    <input type="text" class="form-control" id="datepicker" placeholder="Select" name = "admit" value="<?php if($rows['admiton']!="0000-00-00"){echo $rows['admiton'];} ?>">   
                     <label for="inputFirstName"> <?php    ?> </label>
                 </div>
                               
@@ -355,7 +355,7 @@ $mdetail = "aouk";
                               
                               <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputUsername">Discharged On</label>
-                    <input type="text" class="form-control" id="datepicker1" placeholder="Select" name = "discharge" value="<?php echo $rows['dischrg']   ?>">   
+                    <input type="text" class="form-control" id="datepicker1" placeholder="Select" name = "discharge" value="<?php if($rows['dischrg']!="0000-00-00"){echo $rows['dischrg'];}   ?>">   
                     <label for="inputFirstName"> <?php    ?> </label>
                 </div>
 				
