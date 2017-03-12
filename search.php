@@ -33,6 +33,7 @@ if ( ($admin=="")) {
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-style.css" rel="stylesheet">
+     <link href="css/error.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,8 +104,22 @@ $(function() {    // Makes sure the code contained doesn't run until
             <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputFirstName">NIC Number</label>
-                    <input type="text" class="form-control" name="nic" id="inputFirstName" placeholder="ID Number" value="<?php echo $nic ?>"> <?php echo $erno ?>                 
+                    <input type="text" class="form-control" name="nic" id="inputFirstName" placeholder="ID Number" value="<?php echo $nic ?>"> 
+                        <div class="error"><span></span><?php echo $erno.$ernonic;   ?></div><?php //echo $erno ?>                 
                 </div>
+                <div class="col-lg-6 col-md-6 form-group">                  
+                                    <label for="inputUsername">Search For </label>
+                                    <select class="form-control" name = "num"  value="<?php echo $title   ?>">
+                                         <option value="">--Select--</option>
+                                    <option value="Foot">Foot</option>
+                                    <option value="Arm">Arm</option>  
+                                    <option value="Other">Other</option>  
+<!--                                                 <option value="All">All</option> 
+                <option value="Rev.">Rev..</option> 				-->
+                                  </select>  
+                                    <div class="error"><span></span><?php echo $ernum;   ?></div>
+                                    
+                                </div> 
                 
               </div>
               
@@ -165,7 +180,7 @@ $(function() {    // Makes sure the code contained doesn't run until
               </div>
                 
                 
-                
+                <div class="error"><span></span><?php echo $ernoid ;   ?></div>
               <div class="form-group text-right">
                   <button type="submit" name="search" class="templatemo-blue-button">Search</button>
                 <button type="reset" class="templatemo-white-button">Reset</button>
