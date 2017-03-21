@@ -214,9 +214,8 @@ if (isset($_POST['save']))
     
     } elseif ($ftcause!="") {
                 
-                      $leg = isset($_POST['leg']);
-                     
-                      $knee = isset($_POST['knee']);
+                      $leg = $_POST['leg'];
+                      $knee = $_POST['knee'];
                 $table = "memberfoot";
         if ($leg=="") {
             $erleg = "Please Select Which Leg";
@@ -238,8 +237,8 @@ if (isset($_POST['save']))
             
         }elseif ($acause!="") {
             
-            $arm = isset($_POST['arm']) ;
-             $elbow = isset($_POST['elbow']);
+            $arm = $_POST['arm'] ;
+             $elbow = $_POST['elbow'];
             $table = "memberarm";
     if ($arm=="") {
         $erarm = "Please Select Which Arm";
@@ -263,7 +262,7 @@ VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
      
             $other = $_POST['other'];
              $oarm = $_POST['otherarm'];
-             if(isset($_POST['otherleg'])){$oleg = $_POST['otherleg'];}
+             if($_POST['otherleg']!=""){$oleg = $_POST['otherleg'];}
               
                     $table = "memberother";
                                 if (($oarm=="") || ($oleg == "")) {
