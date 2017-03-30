@@ -41,14 +41,14 @@ CREATE TABLE IF NOT EXISTS `arm` (
   `spons` varchar(25) NOT NULL,
   `sponspaid` varchar(15) NOT NULL,
   `observation` varchar(150) NOT NULL,
-  `recomand` varchar(200) NOT NULL,
+  `recomand` varchar(250) NOT NULL,
   `type` varchar(24) NOT NULL,
   `confirm` varchar(150) NOT NULL,
   `condate` date NOT NULL,
   `repdate` date NOT NULL,
-  `note` varchar(75) NOT NULL,
+  `note` varchar(105) NOT NULL,
   `crton` date NOT NULL,
-  `crtby` char(20) NOT NULL,
+  `crtby` char(30) NOT NULL,
   `modon` date NOT NULL,
   `modby` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -89,11 +89,11 @@ CREATE TABLE IF NOT EXISTS `foot` (
   `confirm` varchar(150) NOT NULL,
   `condate` date NOT NULL,
   `repdate` date NOT NULL,
-  `note` varchar(75) NOT NULL,
+  `note` varchar(105) NOT NULL,
   `crton` date NOT NULL,
   `crtby` char(20) NOT NULL,
   `modon` date NOT NULL,
-  `modby` char(20) NOT NULL
+  `modby` char(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -140,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `memberarm` (
   `afteramp` varchar(50) NOT NULL,
   `vocational` varchar(50) NOT NULL,
   `cause` varchar(25) NOT NULL,
-  `whicharm` char(10) NOT NULL,
-  `aobelbow` char(10) NOT NULL,
+  `whicharm` char(20) NOT NULL,
+  `aobelbow` char(20) NOT NULL,
   `crton` date NOT NULL,
   `crtby` char(20) NOT NULL,
   `modon` date NOT NULL,
@@ -157,8 +157,8 @@ CREATE TABLE IF NOT EXISTS `memberarm` (
 DROP TABLE IF EXISTS `memberfoot`;
 CREATE TABLE IF NOT EXISTS `memberfoot` (
   `regnum` int(25) NOT NULL,
-  `month` int(3) NOT NULL,
-  `year` int(5) NOT NULL,
+  `month` int(5) NOT NULL,
+  `year` int(8) NOT NULL,
   `date` date NOT NULL,
   `district` char(35) NOT NULL,
   `title` text NOT NULL,
@@ -182,12 +182,12 @@ CREATE TABLE IF NOT EXISTS `memberfoot` (
   `afteramp` varchar(50) NOT NULL,
   `vocational` varchar(50) NOT NULL,
   `cause` varchar(25) NOT NULL,
-  `whichleg` char(10) NOT NULL,
-  `aouk` char(10) NOT NULL,
+  `whichleg` char(20) NOT NULL,
+  `aouk` char(20) NOT NULL,
   `crton` date NOT NULL,
   `crtby` char(20) NOT NULL,
   `modon` date NOT NULL,
-  `modby` char(20) NOT NULL
+  `modby` char(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -225,12 +225,12 @@ CREATE TABLE IF NOT EXISTS `memberother` (
   `vocational` varchar(50) NOT NULL,
   `cause` varchar(25) NOT NULL,
   `other` varchar(75) NOT NULL,
-  `whichlego` char(10) NOT NULL,
-  `whicharmo` char(10) NOT NULL,
+  `whichlego` char(20) NOT NULL,
+  `whicharmo` char(20) NOT NULL,
   `crton` date NOT NULL,
   `crtby` char(20) NOT NULL,
   `modon` date NOT NULL,
-  `modby` char(20) NOT NULL
+  `modby` char(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `other` (
   `sponspaid` varchar(15) NOT NULL,
   `observation` varchar(150) NOT NULL,
   `recomand` varchar(200) NOT NULL,
-  `type` varchar(24) NOT NULL,
+  `type` varchar(44) NOT NULL,
   `confirm` varchar(150) NOT NULL,
   `condate` date NOT NULL,
   `repdate` date NOT NULL,
