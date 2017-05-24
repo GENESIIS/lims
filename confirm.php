@@ -42,15 +42,15 @@ if (($admin!="") || ($user!="")) {
         $obs = $_POST['obs'];
         
         if (isset($_POST['limb'])) {
-            $limb = $_POST['limb'];
-        }
-        if (isset($_POST['ortho'])) {
+           $limb = $_POST['limb'];
+		    $type = $limb;
+        }elseif (isset($_POST['ortho'])) {
             $ortho = $_POST['ortho'];
+			$type = $ortho;
         }
-        
         
         if (($tbl=="foot") && ($limb=="")) {
-            $type = $limb;
+             $type = $limb;
             ?>
 
 <script lang="javascript">
@@ -66,7 +66,7 @@ if (($admin!="") || ($user!="")) {
 </script>
             <?php
         }  else {
-          
+         
             $sqllimb = mysql_query("UPDATE $table SET `admiton`='$admit',
             `outpatient`='$out',`dischrg`='$discharge',
             `trainin`='$training',`amputepay`='$ampamnt',`spons`='$spons',`sponspaid`='$spamnt',

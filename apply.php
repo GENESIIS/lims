@@ -9,8 +9,14 @@ include ('connection.php');
 $admin = $_SESSION['level'];
 $user = $_SESSION['username'];
 //echo $register = $_SESSION[$row['regnum']];
- $sid = $_SESSION['id'];
+if (isset($_POST['confirm'])) {
+    $_SESSION['id']= $_POST['hidid'];
+ $_SESSION['table'] = $_POST['hidcol'];
+} 
+     $sid = $_SESSION['id'];
  $table = $_SESSION['table'];
+
+
  include 'apply_code.php';
  
 if (($user!="") || ($admin!="")) {
