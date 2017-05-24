@@ -26,12 +26,15 @@ if (($user!="") || ($admin!="")) {
              $tbl = "other";
          }
         
-         
+         if (isset($_POST['limb'])) {
+           $limb = $_POST['limb'];
+		    $type = $limb;
+        }
         
         $sqllimb = mysql_query("INSERT INTO $tbl (`regnum`, `date`, `admiton`, `outpatient`, `dischrg`, `trainin`, `amputepay`, 
-            `spons`, `sponspaid`,`crton`, `crtby`) 
+            `spons`, `sponspaid`,`type`,`crton`, `crtby`) 
             VALUES ('$sid','$date','$admit','$out','$discharge','$training',
-            '$ampamnt','$spons','$spamnt','$date','$user')");
+            '$ampamnt','$spons','$spamnt','$type','$date','$user')");
         
         if ($sqllimb) {
            ?>

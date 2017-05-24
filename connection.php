@@ -1,6 +1,6 @@
 <?php
 
-$con = mysql_connect("localhost", "root", "");
+$con = mysql_connect("localhost", "lims_db", "Lims!^1ish");
 
 if (!$con) {
     die("cant connect".mysql_error());

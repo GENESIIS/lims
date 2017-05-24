@@ -241,7 +241,7 @@ jQuery(function() {
 				  
 				  <tr>
                     <td> <label for="inputFirstName">Date of Amputation</label></td>
-                    <td colspan="2"><?php echo $rows['surgerydate'] ?></td>
+                    <td colspan="2"><?php if($rows['surgerydate']!="0000-00-00"){echo $rows['surgerydate'];} ?></td>
                     <td><label for="inputFirstName">Cause Of Amputation</label></td>
                      <td colspan="2"><?php echo $rows['cause'] ?></td>
 					
@@ -250,7 +250,7 @@ jQuery(function() {
 				  
 				    <tr>
                     <td><label for="inputFirstName">About Limb</label></td>
-                    <td colspan="4"> <?php echo  $rows[$detail]." - ". $rows[$mdetail]; ?></td>
+                    <td colspan="4"> <?php echo  $rows[$detail]." - ". $rows[$mdetail]."(".$row1['type'].")"; ?></td>
                    
                    
                   </tr>
@@ -259,7 +259,7 @@ jQuery(function() {
                     <td> <label for="inputFirstName">Amount paid by Amputee</label></td>
                     <td colspan="2"> <?php echo $row1['amputepay'] ?></td>
                     <td><label for="inputFirstName">Sponsored by</label></td>
-                     <td colspan="2"> </td>
+                     <td colspan="2">  <?php echo $row1['spons'] ?></td>
 					
                    
                   </tr>
@@ -268,7 +268,7 @@ jQuery(function() {
                     <td> <label for="inputFirstName">Amount Paid By Sponsor</label></td>
                     <td colspan="2"><?php echo $row1['sponspaid'] ?></td>
                     <td><label for="inputFirstName">Admitted On Hospital</label></td>
-                     <td colspan="2"> <?php echo $row1['sponspaid'] ?></td>
+                     <td colspan="2"> <?php if($row1['admiton']!="0000-00-00"){echo $row1['admiton'];} ?></td>
 				
                    
                   </tr>
@@ -290,16 +290,16 @@ jQuery(function() {
                   </tr>
                   <tr rowspan="2">
                       <td> <label for="inputFirstName">Observation</label></td>
-                    <td colspan="5"><?php echo $row1['observation'] ?></td>
+                    <td colspan="5"><?php echo $row1['observation'] ?> <br><br><br><br><br></td>
                     
                     
                   </tr>
                   
 				  
 				   <tr>
-                    <td colspan="2"> <br><label for="inputFirstName">Medical Officer</label></td>
-                    <td colspan="2"><br><label for="inputFirstName">Production Manager</label></td>
-                    <td colspan="2"><br><label for="inputFirstName">Project Manager</label></td>
+                    <td colspan="2" style="text-align:center"> <br><br><br><label for="inputFirstName" >Medical Officer</label></td>
+                    <td colspan="2" style="text-align:center"><br><br><br><label for="inputFirstName">Production Manager</label></td>
+                    <td colspan="2" style="text-align:center"><br><br><br><label for="inputFirstName">Project Manager</label></td>
                    
                    
                   </tr>
@@ -398,10 +398,8 @@ jQuery(function() {
 //                
 //           ?> -->
 			 
-			 
-
                              <a href="javascript:window.print()" class="templatemo-blue-button noprint">Print</a>
-                             <a href="pending.php" class="templatemo-blue-button noprint">   Back</a>
+                             <a href="pending.php" class="templatemo-blue-button noprint pull-right">   Back</a>
 			  </div>
 			   </div>
 			  

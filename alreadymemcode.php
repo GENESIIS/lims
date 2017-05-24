@@ -174,14 +174,15 @@ if (isset($_POST['save']))
     
     }elseif ($ftcause!="") {
                 
-                      $leg = isset($_POST['leg']);
-                      $knee = isset($_POST['knee']);
+                      $leg = ($_POST['leg']);
+                      $knee = ($_POST['knee']);
                 $table = "memberfoot";
         if ($leg=="") {
             $erleg = "Please Select Which Leg";
         }elseif ($knee == "") {
                 $erknee = "Please Select Below or Under Knee";
             }  else {
+				
                  $get= mysql_query("select * from $table where regnum='$rnumber'");
                  if (mysql_num_rows($get)<1) {
                      $sql = "INSERT INTO $table (`regnum`,`month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` , `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`,

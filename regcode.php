@@ -265,8 +265,8 @@ VALUES ('$month','$yr', '$cdate' , '$district', ' $title', '$fname', '$lname',
              if($_POST['otherleg']!=""){$oleg = $_POST['otherleg'];}
               
                     $table = "memberother";
-                                if (($oarm=="") || ($oleg == "")) {
-                                    $erother = "Please Select Arm and Leg";
+                                if ( ($oleg == "")) {
+                                    $erother = "Please Select Leg";
                                 }  else {
                                     $sql = "INSERT INTO $table ( `month`, `year`, `date`, `district`, `title`, `fname`, `lname`, `address` ,
                                     `nic`, `national`, `religion`, `dob`, `sex`, `phone`, `education`, `fammem`, `prioremp`, `presntemp`, `surgerydate`, 

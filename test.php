@@ -1,5 +1,38 @@
 <?php
 session_start();
+//$today = date("Y-m-d"); 
+//$date = strtotime("+7 day"); 
+//$user1=$_SESSION['f_nameu'];
+//$luser1=$_SESSION['l_nameu'];
+//$ulvl=$_SESSION['user_lvl'];
+//$unameu=$_SESSION['u_nameu'];
+//$branch=$_SESSION['branch_city'];
+$district =$title =  $fname =  $lname = $address =$nic =$national =  $religion =  $dob =   $byr =   
+       $birthyr = $age =  $gender =  $number =$edu = $fmemb =  $emp = $pemp =$adate = "";
+         
+          
+        $erleg=$erknee =$erother =$hos = $doc =  $anyother =$aftramp =  $voc = $ftcause = $leg = $knee = $acause = $arm =  $elbow = "";
+          
+       $erarm = $ocause= $other = $oarm= $oleg = "";
+        
+        
+     $erdis = $ertil = $erfnsme =$erad =$ersge =$ergen = $ernum = $rslt="";
+
+$con = mysqli_connect("localhost", "admin", "abc123", "ewre");
+if (mysqli_errno($con)) {
+    echo "failed to connect to the db".  mysqli_connect_error();
+    exit();
+}
+
+
+if (isset($_POST['sub'])) {
+    echo "<script>alert(inside);</script>";
+    echo $leg = $_POST['leg'];
+     echo $kn = $_POST['knee'];
+     die();
+}
+
+
 include ('connection.php');
 $admin = $_SESSION['level'];
 $user = $_SESSION['username'];
@@ -7,8 +40,7 @@ $user = $_SESSION['username'];
 
 if (($user!="")) {
     $date = date("Y.m.d");
-    include 'alreadymemcode.php';
-
+   
     
 ?>
 
@@ -18,7 +50,8 @@ if (($user!="")) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jaipur Foot workshop Registration form</title>
+    <title> 
+        Jaipur Foot workshop Registration form</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
   
@@ -48,7 +81,7 @@ if (($user!="")) {
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<link href="css/error.css" rel="stylesheet">
+ <link href="css/error.css" rel="stylesheet">
 
 <script>
 
@@ -102,11 +135,7 @@ jQuery(function() {
     
 });
 jQuery(function() {
-    jQuery( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true});
-    
-});
-jQuery(function() {
-    jQuery( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true, yearRange : '-90:yy+1'});
+    jQuery( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd',changeYear: true,changeMonth:true, yearRange : '-90:yy+1'});
     
 });
 
@@ -122,19 +151,22 @@ jQuery(function() {
 }
     </style>
 
+
   </head>
   <body>
     <!-- Left column -->
     <div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
-        <?php  
- if ($admin=="super") {
+        <?php
+        if ($admin=="super") {
             include 'smenue.php';
         }elseif ($admin=="admin") {
             include 'menu.php';
             }  else {
               include 'menuuser.php';  
             }
+
+
 
 		?>
       </div>
@@ -146,8 +178,8 @@ jQuery(function() {
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li><a href="registration.php" >New Registration</a></li>
-				<li><a href="alreadymem.php" class="active">Old Registration</a></li>
+                <li><a href="registration.php" class="active">New Registration</a></li>
+				<li><a href="alreadymem.php" >Old Registration</a></li>
 <!--                <li><a href="">Dashboard</a></li>
                 <li><a href="">Overview</a></li>
                 <li><a href="login.html">Sign in form</a></li>-->
@@ -157,35 +189,35 @@ jQuery(function() {
         </div>
         <div class="templatemo-content-container">
           <div class="templatemo-content-widget white-bg">
-            <h2 class="margin-bottom-10" align="center">Jaipur Foot workshop Registration form</h2>
-            <p>
-                
-            </p><br>
+            <h2 class="margin-bottom-10" align="center">Friend-In-Need Society,<br>
+        Colombo. <br>
+                Jaipur Foot workshop Registration form</h2>
+            <p></p><br>
              <form  class="templatemo-login-form" method="post" enctype="multipart/form-data">
                 <div id="reg">
-                    <div class="error"><span></span><?php echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?></div>
                   <div class="row form-group">
-                      <div class="col-lg-4 col-md-4 form-group required">                  
-                          <label for="inputLastName" class="control-label">Reg Num </label>
-                        <input type="text" class="form-control" placeholder="Example ; 01/01/2016" name = "rnumber"  value="<?php echo $regnumber ?>">                  
+                      <div class="error"><span></span><?php echo $erleg ;echo $erknee; echo $erother;echo $erarm;   ?></div>
+                    <div class="col-lg-6 col-md-6 form-group">                  
+                        <label for="inputLastName">Date </label>
+                        <input type="text" class="form-control"  disabled="" placeholder="<?php echo date("Y.m.d") ?>" name = "date"  >                  
                     </div> 
-                    <div class="col-lg-4 col-md-4 form-group required">                  
-                        <label for="inputLastName" class="control-label">Date </label>
-                        <input type="date" class="form-control" id="datepicker2" value=" <?php echo date("Y.m.d") ?>" placeholder="<?php echo date("Y.m.d") ?>" name = "date"  >                  
-                    </div> 
-                        <div class="col-lg-4 col-md-4 form-group required">                  
+                      
+                        <div class="col-lg-6 col-md-6 form-group required">                  
                             <label for="inputLastName" class="control-label">District </label>
-                            <select class="form-control" name = "district" required="">
-                                     
+                         <select class="form-control" name = "district" >
+<!--                                     <option value="" disabled selected>--Select-- </option>-->
                                      <option value="<?php  echo $district ?>"><?php  echo $district ?></option>
+                                     
                                            <?php 
                                         $sql = mysql_query("SELECT * FROM  district ORDER BY district ASC");
+                                        
                                         while ($row = mysql_fetch_array($sql)){
                                         echo "<option value= ".$row['district'].">" . $row['district'] . "</option>";
                                         }
                                         ?>				
                               </select> 
-                  <label for="inputFirstName"> <?php echo $erdis  ?> </label>
+<!--                  <label for="inputFirstName" class="error"> <?php // echo $erdis  ?> </label>-->
+                  <div class="error"><span></span><?php echo $erdis  ?></div>
                     
                  </div>
               </div>
@@ -193,42 +225,42 @@ jQuery(function() {
                     
               <div class="row form-group">
 			  <div class="col-lg-12  form-group">
-               <div class="col-lg-2 col-md-2 form-group required">                  
+                <div class="col-lg-2 col-md-2 form-group required">                  
                     <label for="inputUsername" class="control-label">Title</label>
-                     <select class="form-control" name = "title" value="<?php echo $title   ?>">
+                    <select class="form-control" name = "title" >
                          <option value="<?php echo $title ?>"selected><?php echo $title ?></option>
                     <option value="Mr">Mr.</option>
                     <option value="Mrs">Mrs.</option>  
 					<option value="Miss">Miss.</option>  
 				<option value="Master">Master.</option> 
-<option value="Rev.">Rev..</option> 				
+                                <option value="Rev.">Rev..</option> 				
                   </select>  
                     
-                    <label for="inputFirstName"> <?php echo $ertil  ?> </label>
+                    <label for="inputFirstName"> <div class="error"><span></span><?php echo $ertil  ?></div> </label>
                 </div>
                               
                                
 				
 				<div class="col-lg-4 col-md-4 form-group required">                  
                     <label for="inputUsername" class="control-label">First Name</label>
-                    <input type="text" class="form-control" id="inputUsername" placeholder="First Name" name = "fname" value="<?php echo $fname   ?>" required="">   
+                    <input type="text" class="form-control" id="inputUsername" placeholder="First Name" name = "fname" value="<?php echo $fname   ?>" >   
                     <label for="inputFirstName"> <?php echo $erfnsme  ?> </label>
                 </div>
 				
 				 
                 <div class="col-lg-6 col-md-6 form-group required">                  
                     <label for="inputEmail" class="control-label">Last Name</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Last name" name = "lname" required="" value="<?php echo $lname   ?>"> 
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Last name" name = "lname"  value="<?php echo $lname   ?>"> 
                   
                 </div> 
 				
 				</div>
               </div>
 			  
-			   <div class="row form-group required">
+			    <div class="row form-group required">
                 <div class="col-lg-12 form-group">                   
                     <label class="control-label" for="inputNote">Address</label>
-                    <textarea class="form-control" id="inputNote" rows="3" name = "address" placeholder="Address..." required=""><?php echo $address   ?></textarea>
+                    <textarea class="form-control" id="inputNote" rows="3" name = "address" placeholder="Address..." ><?php echo $address   ?></textarea>
                     
                      <label for="inputFirstName"> <?php echo $erad  ?> </label>
                 </div>
@@ -238,19 +270,15 @@ jQuery(function() {
                      <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group">                  
                     <label for="inputFirstName">ID Number </label>
-                    <input  onblur="myFunction1()" type="text" class="form-control" id="nc" name ="nicold" value="<?php echo $nic   ?>" maxlength="10">  
+                    <input  onblur="myFunction1()" type="text" class="form-control" id="nc" name ="nic" value="<?php echo $nic   ?>" maxlength="10">  
                     
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
                 </div>
                         <script>
-//                            function checkLength(el) {
-//                                    if (el.value.length != 10) {
-//                                      alert("length must be exactly 10 characters")
-//                                    }
-//                                  }
+
                             function myFunction1() {
                         var y = document.getElementById("nc").value;
-                        if((y.length!=10) || (isNaN(y))){
+                        if((y.length!=10)){
                             alert('Please enter a valied NIC Number');
                         }
                     }
@@ -292,7 +320,7 @@ jQuery(function() {
 			   <div class="row form-group">
                 <div class="col-lg-4 col-md-4 form-group required">                  
                     <label for="inputFirstName" class="control-label">Date Of Birth </label>
-                    <input type="text" class="form-control" id="datepicker" placeholder="DOB" name = "dob" value="<?php echo $dob  ?>" required="">  
+                    <input type="text" class="form-control" id="datepicker" placeholder="DOB" name = "dob" value="<?php echo $dob  ?>" >  
                     <label for="inputFirstName"> <?php echo $ersge ?> </label>
                </div>
                 <div class="col-lg-4 col-md-4 form-group required">                  
@@ -303,13 +331,14 @@ jQuery(function() {
                     <option value="Female">Female</option>  
 									
                   </select>     
-                    
-                     <label for="inputFirstName"> <?php echo $ergen  ?> </label>
+                    <div class="error"><span></span><?php echo $ergen  ?></div>
+<!--                     <label for="inputFirstName"> <?php //echo $ergen  ?> </label>-->
                 </div> 
 				<div class="col-lg-4 col-md-4 form-group required">                  
                     <label for="inputLastName" class="control-label">Phone Number </label>
-                    <input type="tel" class="form-control" id="tel" required=""  onblur="myFunction()" placeholder="Phone Number" name = "number" value="<?php echo $number ?>" maxlength="10">    
-                    <label for="inputFirstName"> <?php echo $ernum ?> </label>
+                    <input type="tel" class="form-control" id="tel"   onblur="myFunction()" placeholder="Phone Number" name = "number" value="<?php echo $number ?>" maxlength="10">    
+                    <div class="error"><span></span><?php echo $ernum  ?></div>
+<!--                    <label for="inputFirstName"> <?php echo $ernum ?> </label>-->
                 </div>
               </div>
 		
@@ -426,56 +455,19 @@ jQuery(function() {
                                     <label for="inputUsername" class="control-label">cause of amputation</label>
                                      <select class="form-control" name = "footcause">
                                          <option value="0">--Select--</option>
-                                      <option value="Accident">Accident</option>
-<option value="Blood Clot">Blood Clot</option>
-<option value="Bomb Blast">Bomb Blast</option>
-<option value="Bone Disease">Bone Disease</option>
-<option value="Burn Injury">Burn Injury</option>
-<option value="Bus Accident">Bus Accident</option>
-<option value="Cancer">Cancer</option>
-<option value="Civil Commotion">Civil Commotion</option>
-<option value="Chronic Ulcer">Chronic Ulcer</option>
-<option value="Congenital Deformityty">Congenital Deformityty</option>
-<option value="Corn">Corn</option>
-<option value="Congenital Deformities">Congenital Deformities</option>
-<option value="Crushed By  Stone">Crushed By  Stone</option>
-<option value="Crushed by Log">Crushed by Log</option>
-<option value="Crushed by Tree">Crushed by Tree</option>
-<option value="Cut by sword">Cut by sword</option>
-<option value="Diabetes">Diabetes</option>
-<option value="Diabetic Wound">Diabetic Wound</option>
-<option value="Disease">Disease</option>
-<option value="Electric Shock">Electric Shock</option>
-<option value="Factory Accident">Factory Accident.</option>
-<option value="Fall From a Tree">Fall From a Tree</option>
-<option value="Fall to a Well">Fall to a Well</option>
-<option value="Filaria">Filaria</option>
-<option value="From Birth">From Birth</option>
-<option value="Gangrene">Gangrene</option>
-<option value="Gangrenous Wound">Gangrenous Wound</option>
-<option value="Gun Shot Injury">Gun Shot Injury</option>
-<option value="Industrial Accident">Industrial Accident</option>
-<option value="Infection">Infection</option>
-<option value="Land Mine">Land Mine</option>
-<option value="Leprosy">Leprosy</option>
-<option value="Lorry Accident">Lorry Accident</option>
-<option value="Miscellaneous">Miscellaneous</option>
-<option value="Mortar Bomb Blast">Mortar Bomb Blast</option>
-<option value="Motor Bike Accident">Motor Bike Accident</option>
-<option value="Nail Prick">Nail Prick</option>
-<option value="Osteomylites">Osteomylites</option>
-<option value="Osteosarcoma">Osteosarcoma.</option>
-<option value="Pressure Mine">Pressure Mine</option>
-<option value="Road Accident">Road Accident.</option>
-<option value="Rocket Bomb">Rocket Bomb</option>
-<option value="Shell Blast">Shell Blast</option>
-<option value="Snake Bite">Snake Bite</option>
-<option value="Thorn Prick">Thorn Prick</option>
-<option value="Tractor Accident">Tractor Accident.</option>
-<option value="Train Accident">Train Accident</option>
-<option value="Trap Gun">Trap Gun</option>
-<option value="Vascular Disease">Vascular Disease</option>
-<option value="Wound">Wound</option>
+                                    <option value="Road Accident">Road Accident</option>
+                                    <option value="Train Accident">Train Accident</option>
+                                    <option value="Industrial Accident">Industrial Accident</option>
+                                    <option value="Congenital Deformities">Congenital Deformities</option>
+                                    <option value="Gangrenous wounds">Gangrenous wounds</option>
+                                    <option value="Vascular Disease">Vascular Disease</option>
+                                    <option value="Trapgun Explosions">Trapgun Explosions</option>
+                                    <option value="Cancer">Cancer</option>
+                                    <option value="Miscellaneous">Miscellaneous</option>
+                                    <option value="From Birth">From Birth</option>  
+                                    <option value="Civil Commotion">Civil Commotion</option>  
+<!--                                                 <option value="Master">Master.</option> 
+                <option value="Rev.">Rev..</option> 				-->
                                   </select>  
 
                                     <label for="inputFirstName"> </label>
@@ -500,7 +492,7 @@ jQuery(function() {
                                                                       <label for="r4" class="font-weight-400"><span></span>Both Legs</label>
                                                                     </div>
                                                                                <div class="margin-right-15 templatemo-inline-block">
-                                                                      <?php echo $erleg ?>
+                                                                     <div class="error"><span></span><?php echo $erleg ?></div> 
                                                                     </div>                 
                                                                                          </div>
 
@@ -514,8 +506,8 @@ jQuery(function() {
                                                                       <input type="radio" name="knee"  value="Below Knee" id="r6" <?php //echo $under ?> >
                                                                       <label for="r6" class="font-weight-400"><span></span>Below Knee</label>
                                                                     </div>
-
-                                                                         </div>	<?php echo $erknee ?>
+                                                                                            <div class="error"><span></span><?php echo $erknee ?></div> 
+                                                                         </div> 	
 
 
                                                               </div>
@@ -562,8 +554,9 @@ jQuery(function() {
                                                                       <input type="radio" name="arm"  value="Both"  id="r9" <?php //echo $both ?>>
                                                                       <label for="r9" class="font-weight-400"><span></span>Both Arms</label>
                                                                     </div>
-
-                                                                                         </div><?php echo $erarm   ?>
+                                                                                     <div class="error"><span></span><?php echo $erarm   ?></div>
+                                                                                         </div>
+                                                                                            
 
                                                                                         <div class="col-lg-6 col-md-6 form-group"> 
 
@@ -575,7 +568,7 @@ jQuery(function() {
                                                                       <input type="radio" name="elbow"  value="Below Elbow" id="r11" <?php //echo $under ?> >
                                                                       <label for="r11" class="font-weight-400"><span></span>Below Elbow</label>
                                                                     </div>
-
+                                                                                            <div class="error"><span></span><?php echo $erarm   ?></div>
                                                                          </div>	
 
 
@@ -603,7 +596,7 @@ jQuery(function() {
                 <option value="Rev.">Rev..</option> 				-->
                                   </select>  
 
-                                    <label for="inputFirstName"> <?php echo $ertil  ?> </label>
+                                    <label for="inputFirstName"><div class="error"><span></span><?php echo $ertil  ?></div>  </label>
                                 </div> 
                                                           <div class="col-lg-6 col-md-6 form-group">                  
                     <label for="inputLastName">Other Details </label>
@@ -664,7 +657,7 @@ jQuery(function() {
                           
                 <div class="form-group text-right" id="save" style="display: none ">
                   
-                <button type="submit" class="templatemo-blue-button" name = "save">Save</button>
+                <button type="sub" class="templatemo-blue-button" name = "save">Save</button>
                 <button type="reset" class="templatemo-white-button">Reset</button>
               </div>
                           
@@ -710,8 +703,12 @@ jQuery(function() {
 ?>
 
     
-    <script>
-        
+    
 
- 
-    </script>
+    
+    
+    
+    
+    
+    
+    

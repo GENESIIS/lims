@@ -57,13 +57,7 @@ $(function() {    // Makes sure the code contained doesn't run until
 
 });
 
-$(document).ready(function(){
-    $("#advanced").click(function(){
 
-        $('#last').show(200);
-       
-    });
-});
 
 </script>
     
@@ -233,126 +227,6 @@ $(document).ready(function(){
               </div> 
             
             </form>
-            
-            <input type="button" class="templatemo-blue-button" id="advanced" name="advance" value="Advance Search">
-            <div id="last" style="display: none">
-                <form class="templatemo-login-form" method="post" action="districtsearch.php">
-            <div class="row form-group">
-                <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputFirstName">Cause</label>
-                   <select class="form-control" name = "district" required="Please select the District">
-                                   <option value="Accident">Accident</option>
-<option value="Blood Clot">Blood Clot</option>
-<option value="Bomb Blast">Bomb Blast</option>
-<option value="Bone Disease">Bone Disease</option>
-<option value="Burn Injury">Burn Injury</option>
-<option value="Bus Accident">Bus Accident</option>
-<option value="Cancer">Cancer</option>
-<option value="Civil Commotion">Civil Commotion</option>
-<option value="Chronic Ulcer">Chronic Ulcer</option>
-<option value="Congenital Deformityty">Congenital Deformityty</option>
-<option value="Corn">Corn</option>
-<option value="Congenital Deformities">Congenital Deformities</option>
-<option value="Crushed By  Stone">Crushed By  Stone</option>
-<option value="Crushed by Log">Crushed by Log</option>
-<option value="Crushed by Tree">Crushed by Tree</option>
-<option value="Cut by sword">Cut by sword</option>
-<option value="Diabetes">Diabetes</option>
-<option value="Diabetic Wound">Diabetic Wound</option>
-<option value="Disease">Disease</option>
-<option value="Electric Shock">Electric Shock</option>
-<option value="Factory Accident">Factory Accident.</option>
-<option value="Fall From a Tree">Fall From a Tree</option>
-<option value="Fall to a Well">Fall to a Well</option>
-<option value="Filaria">Filaria</option>
-<option value="From Birth">From Birth</option>
-<option value="Gangrene">Gangrene</option>
-<option value="Gangrenous Wound">Gangrenous Wound</option>
-<option value="Gun Shot Injury">Gun Shot Injury</option>
-<option value="Industrial Accident">Industrial Accident</option>
-<option value="Infection">Infection</option>
-<option value="Land Mine">Land Mine</option>
-<option value="Leprosy">Leprosy</option>
-<option value="Lorry Accident">Lorry Accident</option>
-<option value="Miscellaneous">Miscellaneous</option>
-<option value="Mortar Bomb Blast">Mortar Bomb Blast</option>
-<option value="Motor Bike Accident">Motor Bike Accident</option>
-<option value="Nail Prick">Nail Prick</option>
-<option value="Osteomylites">Osteomylites</option>
-<option value="Osteosarcoma">Osteosarcoma.</option>
-<option value="Pressure Mine">Pressure Mine</option>
-<option value="Road Accident">Road Accident.</option>
-<option value="Rocket Bomb">Rocket Bomb</option>
-<option value="Shell Blast">Shell Blast</option>
-<option value="Snake Bite">Snake Bite</option>
-<option value="Thorn Prick">Thorn Prick</option>
-<option value="Tractor Accident">Tractor Accident.</option>
-<option value="Train Accident">Train Accident</option>
-<option value="Trap Gun">Trap Gun</option>
-<option value="Vascular Disease">Vascular Disease</option>
-<option value="Wound">Wound</option>
-                       
-                              </select> 
-                        <div class="error"><span></span><?php echo $erno.$ernonic;   ?></div><?php //echo $erno ?>                 
-                </div>
-                <div class="col-lg-6 col-md-6 form-group">                  
-                                    <label for="inputUsername">Search For </label>
-                                    <select class="form-control" name = "num"  value="<?php echo $title   ?>">
-                                         <option value="">--Select--</option>
-                                    <option value="memberfoot">Foot</option>
-                                    <option value="memberarm">Arm</option>  
-                                    <option value="memberother">Other</option>  
-<!--                                                 <option value="All">All</option> 
-                <option value="Rev.">Rev..</option> 				-->
-                                  </select>  
-                                    <div class="error"><span></span><?php echo $ernum;   ?></div>
-                                    
-                                </div> 
-                
-              </div>
-              
-              <div class="form-group text-right">
-                  <button type="submit" name="searchdistrict" class="templatemo-blue-button">Search</button>
-                <button type="reset" class="templatemo-white-button">Reset</button>
-              </div> 
-            
-            </form>
-                
-                  <form class="templatemo-login-form" method="post" action="districtsearch.php">
-            <div class="row form-group">
-                <div class="col-lg-4 col-md-4 form-group">                  
-                    <label for="inputFirstName">Patient Name</label>
-                       <input type="text" class="form-control" id="inputNote" rows="2" name = "district" placeholder="First name or Last name" value="">            
-                       
-                               
-                        <div class="error"><span></span><?php echo $erno.$ernonic;   ?></div><?php //echo $erno ?>                 
-                </div>
-                <div class="col-lg-6 col-md-6 form-group">                  
-                                    <label for="inputUsername">Search For </label>
-                                    <select class="form-control" name = "num"  value="<?php echo $title   ?>">
-                                         <option value="">--Select--</option>
-                                    <option value="memberfoot">Foot</option>
-                                    <option value="memberarm">Arm</option>  
-                                    <option value="memberother">Other</option>  
-<!--                                                 <option value="All">All</option> 
-                <option value="Rev.">Rev..</option> 				-->
-                                  </select>  
-                                    <div class="error"><span></span><?php echo $ernum;   ?></div>
-                                    
-                                </div> 
-                
-              </div>
-              
-              <div class="form-group text-right">
-                  <button type="submit" name="searchdistrict" class="templatemo-blue-button">Search</button>
-                <button type="reset" class="templatemo-white-button">Reset</button>
-              </div> 
-            
-            </form>
-                
-            </div>
-            
-            
             
           </div>
           <footer class="text-right">

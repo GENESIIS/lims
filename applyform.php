@@ -346,6 +346,27 @@ $code = "J.F /";
                              
                           </div>
                 </div>
+				<div class="col-lg-12  form-group">
+                                           <div class="col-lg-6 col-md-6 form-group">                  
+                                    <label for="inputUsername">Limb Type</label>
+                                    <select class="form-control" name = "limb" value="<?php  ?>" required="">
+                                         <option value="">--Select--</option>
+                                    <option value="B/K Plastic Limb">B/K Plastic Limb</option>
+                                    <option value="B/K Aluminium Limb">B/K Aluminium Limb</option>
+                                    <option value="B/K Leather Limb">B/K Leather Limb</option>
+                                    <option value="B/K H.D.P Limb">B/K H.D.P Limb</option>
+                                    <option value="A/K Plastic Limb">A/K Plastic Limb</option>
+                                    <option value="A/K H.D.P Limb">A/K H.D.P Limb</option>
+                                    <option value="A/K Aluminium Limb">A/K Aluminium Limb</option>
+                                    
+                                    
+<!--                                                 <option value="Master">Master.</option> 
+                <option value="Rev.">Rev..</option> 				-->
+                                  </select>  
+
+                                    <label for="inputFirstName">  </label>
+                                </div> 
+                                            </div>  
                 
                  
                <div class="form-group text-right">

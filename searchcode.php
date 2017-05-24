@@ -184,8 +184,9 @@ $nic=$ernum=$erno=$ernonic= $ernoid  = "";
                                  
                                 }
 //                }      
-}  else {
-//Do NOthing    
+}  elseif(isset ($_POST['confirm'])) {
+   
+    
 }
 
 ?>

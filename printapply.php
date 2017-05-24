@@ -276,7 +276,8 @@ $code = "J.F /";
 					<tr>
                   
                       <td>About Limb</td>
-                      <td> <?php echo $rows['whichleg']."  ".$rows['aouk'].$rows['whicharm']."  ".$rows['aobelbow'].$rows['whichlego']."  ".$rows['whicharmo']; ?></td>                    
+                      <td> <?php echo $rows['whichleg']."  ".$rows['aouk'].$rows['whicharm']."  ".$rows['aobelbow'].$rows['whichlego']."  ".$rows['whicharmo']; 
+					  echo "    (".$rows['type'];?></td>                    
                     </tr>
                     
 					
@@ -290,14 +291,14 @@ $code = "J.F /";
                                   
                     <tr>
                         <td>Sponsored by</td>
-                                            <td> </td> 
+                                            <td> <?php echo $rows['spons'] ?> </td> 
                       <td>Amount Paid By Sponsor</td>
                       <td> <?php echo $rows['sponspaid'] ?></td>                    
                     </tr>
                     
                     <tr>
                       <td>Admitted On Hospital</td>
-                      <td> <?php echo $rows['sponspaid'] ?></td>
+                      <td> <?php if($rows['admiton']!="0000-00-00"){echo $rows['admiton'];}  ?></td>
                       <td>Out Patient</td>
                       <td> <?php echo $rows['sponspaid'] ?></td>
                     </tr>
@@ -313,7 +314,7 @@ $code = "J.F /";
                     
                     <tr>
                       <td>Observation</td>
-                      <td> <?php echo $rows['sponspaid'] ?></td>  
+                      <td> <?php echo $rows['sponspaid'] ?><br><br></td>  
                     </tr>
                     
                     <tr><td></td></tr>
